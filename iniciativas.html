@@ -303,6 +303,29 @@
         display: none;
       }
 
+      .main-nav.mobile-open {
+        display: flex;
+        position: absolute;
+        top: 96px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        padding: 12px 6vw 18px;
+        background: var(--header-blue);
+        border-top: 1px solid rgba(255,255,255,.16);
+        box-shadow: 0 12px 24px rgba(0,0,0,.16);
+      }
+
+      .main-nav.mobile-open a {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,.12);
+      }
+
+      .main-nav.mobile-open a:last-child {
+        border-bottom: 0;
+      }
+
       .menu-toggle {
         display: block;
       }
@@ -763,5 +786,6 @@
 
   </footer>
 
+  <script src="assets/script.js"></script>
 </body>
 </html>
