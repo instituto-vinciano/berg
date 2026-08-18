@@ -1,0 +1,1257 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Radioastronomia em Cordel — iniciativa do BERG que aproxima ciência, literatura de cordel e divulgação científica."
+  >
+
+  <title>Radioastronomia em Cordel — BERG</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
+
+    :root {
+      --blue: #2450b8;
+      --deep: #15357f;
+      --ink: #111827;
+      --muted: #5d6675;
+      --white: #ffffff;
+      --soft: #f4f6fa;
+      --line: #dde2ea;
+      --header-blue: #31509F;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #ffffff;
+      font-family: "DM Sans", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .site-header {
+      height: 96px;
+      padding: 0 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--header-blue);
+      border-bottom: 1px solid rgba(255,255,255,.20);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .site-logo {
+      display: block;
+      width: 170px;
+      height: auto;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 34px;
+    }
+
+    .main-nav a {
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    .main-nav a:hover {
+      color: #d9e2ff;
+    }
+
+    .menu-toggle {
+      display: none;
+      color: #ffffff;
+      background: none;
+      border: 0;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .cordel-hero {
+      position: relative;
+      min-height: 440px;
+      display: flex;
+      align-items: center;
+      padding: 56px 8vw;
+      overflow: hidden;
+      background: var(--deep);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cordel-hero-image {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 52%;
+    }
+
+    .cordel-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(10, 31, 82, .95) 0%,
+          rgba(18, 55, 125, .88) 34%,
+          rgba(32, 82, 157, .60) 55%,
+          rgba(32, 82, 157, .18) 76%,
+          rgba(32, 82, 157, .05) 100%
+        );
+      pointer-events: none;
+    }
+
+    .cordel-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #dbe6ff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .blue-eyebrow {
+      color: var(--blue);
+    }
+
+    .cordel-hero h1 {
+      margin: 0;
+      color: #ffffff;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 38px;
+      line-height: 1.25;
+    }
+
+    .cordel-hero p {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: rgba(255,255,255,.80);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .section {
+      padding: 68px 8vw;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 54px;
+      align-items: start;
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 34px;
+      line-height: 1.3;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .series-panel {
+      padding: 32px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+    }
+
+    .series-panel h3 {
+      margin: 0 0 12px;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+
+    .series-panel p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .series-panel .series-path {
+      margin: 18px 0;
+      color: var(--deep);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.8;
+    }
+
+    .featured-work {
+      background: var(--soft);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .work-media {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid var(--line);
+    }
+
+    .work-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #ffffff;
+    }
+
+    .work-copy h3 {
+      margin: 0 0 12px;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 30px;
+      line-height: 1.3;
+    }
+
+    .work-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .work-identifiers {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .work-identifiers p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+
+    .citation-link {
+      display: inline-block;
+      margin-top: 12px;
+    }
+
+    .didactic-section {
+      background: #ffffff;
+    }
+
+    .didactic-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 54px;
+      align-items: start;
+    }
+
+    .didactic-panel {
+      padding: 32px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+    }
+
+    .didactic-panel h3 {
+      margin: 0 0 12px;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+
+    .didactic-panel p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .associated-list {
+      display: grid;
+      gap: 0;
+      margin-top: 28px;
+    }
+
+    .associated-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .associated-item:last-child {
+      border-bottom: 0;
+    }
+
+    .associated-type {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .associated-item h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      line-height: 1.35;
+    }
+
+    .associated-item p {
+      margin: 0 0 10px;
+      font-size: 15px;
+    }
+
+    .event-list {
+      display: grid;
+      gap: 0;
+      margin-top: 28px;
+    }
+
+    .event-row {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .event-row:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .event-row-media {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--soft);
+      border: 1px solid var(--line);
+    }
+
+    .event-row-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .event-meta {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .event-row h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      line-height: 1.35;
+    }
+
+    .event-row p {
+      margin: 0 0 10px;
+      font-size: 15px;
+    }
+
+    .press-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .press-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .press-item:last-child {
+      border-bottom: 0;
+    }
+
+    .press-item h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      line-height: 1.35;
+    }
+
+    .press-item p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .future-band {
+      padding: 54px 8vw;
+      background: var(--header-blue);
+      color: #ffffff;
+    }
+
+    .future-band-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .future-band p {
+      max-width: 760px;
+      margin: 12px 0 0;
+      color: rgba(255,255,255,.80);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .future-band h2 {
+      margin: 0;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 32px;
+      line-height: 1.3;
+    }
+
+    .text-link {
+      color: var(--deep);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .text-link:hover {
+      text-decoration: underline;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 24px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .site-footer {
+      padding: 58px 8vw 20px;
+      color: rgba(255,255,255,.88);
+      background: var(--header-blue);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: .75fr 1.25fr 1.15fr 1.05fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .footer-brand img {
+      display: block;
+      width: 150px;
+      height: auto;
+    }
+
+    .footer-label {
+      margin: 0 0 10px;
+      color: rgba(255,255,255,.78);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .footer-column h3 {
+      margin: 0 0 12px;
+      color: #ffffff;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 21px;
+      line-height: 1.35;
+    }
+
+    .footer-column p {
+      margin: 0 0 14px;
+      color: rgba(255,255,255,.82);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .footer-link {
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .footer-motto {
+      margin-bottom: 16px;
+      color: #ffffff;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 20px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .footer-contact {
+      margin-top: 20px;
+    }
+
+    .footer-contact a {
+      color: rgba(255,255,255,.92);
+      text-decoration: none;
+    }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 42px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.20);
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      text-align: center;
+      color: rgba(255,255,255,.72);
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .main-nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .site-header {
+        padding: 0 5vw;
+      }
+
+      .site-logo {
+        width: 160px;
+      }
+
+      .cordel-hero {
+        min-height: 420px;
+        padding: 48px 7vw;
+      }
+
+      .cordel-hero-image {
+        object-position: 62% center;
+      }
+
+      .intro-grid,
+      .work-grid,
+      .didactic-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .event-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .event-row-media {
+        max-width: 560px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .section,
+      .future-band {
+        padding-left: 7vw;
+        padding-right: 7vw;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .site-footer {
+        padding-left: 7vw;
+        padding-right: 7vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+   <a aria-label="P&aacute;gina inicial do BERG" class="brand" href="index.html">
+    <img alt="BERG &mdash; Brazilian Educational Radioastronomy Group" class="site-logo" src="images/berg-logo.png"/>
+   </a>
+   <nav aria-label="Navega&ccedil;&atilde;o principal" class="main-nav">
+    <a href="index.html">Início</a>
+    <a href="iniciativas.html">Iniciativas</a>
+    <a href="noticias.html">Not&iacute;cias</a>
+    <a href="publicacoes.html">Publicações</a>
+    <a href="acervo.html">Acervo</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+   </nav>
+   <button aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" type="button">
+    ☰
+   </button>
+  </header>
+
+<main>
+
+  <section class="cordel-hero">
+
+    <img
+      class="cordel-hero-image"
+      src="images/cordel/hero-cordel.png"
+      alt=""
+      aria-hidden="true"
+    >
+
+    <div class="cordel-hero-content">
+      <p class="eyebrow">INICIATIVA · LITERATURA · DIVULGAÇÃO CIENTÍFICA</p>
+
+      <h1>Radioastronomia em Cordel</h1>
+
+      <p>
+        Projeto editorial e educativo que aproxima a radioastronomia
+        da literatura de cordel, explorando descobertas, personagens
+        e conceitos científicos por meio da cultura popular.
+      </p>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="section-inner intro-grid">
+
+      <div>
+        <p class="eyebrow blue-eyebrow">A INICIATIVA</p>
+
+        <h2>Ciência em versos</h2>
+
+        <p>
+          <em>Radioastronomia em Cordel</em> é uma iniciativa editorial e educativa
+          que aproxima a ciência da literatura popular nordestina. Por meio da linguagem
+          poética do cordel, conceitos, descobertas, instrumentos e questões da
+          radioastronomia são apresentados de forma acessível, combinando divulgação
+          científica, literatura e possibilidades de uso educativo.
+        </p>
+
+        <p>
+          Concebida como uma série de seis cordéis independentes, mas interligados,
+          a coleção propõe uma jornada progressiva pelo universo observado através
+          das ondas de rádio — das origens da radioastronomia aos fenômenos e questões
+          que continuam ampliando nossa compreensão do cosmos.
+        </p>
+      </div>
+
+      <aside class="series-panel">
+        <p class="eyebrow blue-eyebrow">UMA JORNADA PELO UNIVERSO INVISÍVEL</p>
+
+        <h3>6 cordéis · uma narrativa</h3>
+
+        <p class="series-path">
+          Descoberta → expansão → compreensão → fenômenos → instrumentos → reflexão
+        </p>
+
+        <p>
+          Cada publicação possui autonomia própria, mas integra uma trajetória
+          que explora diferentes formas pelas quais a radioastronomia permite
+          conhecer o universo além da luz visível.
+        </p>
+      </aside>
+
+    </div>
+  </section>
+
+
+  <section class="section featured-work">
+    <div class="section-inner work-grid">
+
+      <div class="work-media">
+        <img
+          src="images/iniciativas/cordel-pulsares.png"
+          alt="Pulsares: Relógios Cósmicos"
+        >
+      </div>
+
+      <div class="work-copy">
+        <p class="eyebrow blue-eyebrow">PRIMEIRO TÍTULO</p>
+
+        <h3>Pulsares: Relógios Cósmicos</h3>
+
+        <p>
+          Primeiro título da série Radioastronomia em Cordel, a publicação apresenta
+          ao leitor o universo dos pulsares, aproximando conceitos científicos
+          da tradição narrativa e poética da literatura de cordel.
+        </p>
+
+        <div class="work-meta">
+          <span>Campina Grande</span>
+          <span>2025</span>
+        </div>
+
+        
+          <div class="work-identifiers">
+    <p><strong>ISBN:</strong> 978-65-01-51176-4</p>
+
+    <p>
+        <strong>DOI:</strong>
+        <a href="https://doi.org/10.5281/zenodo.17014320" target="_blank" rel="noopener noreferrer">
+            10.5281/zenodo.17014320
+        </a>
+    </p>
+
+    <div class="citation-box">
+        <p><strong>Como citar:</strong></p>
+
+        <p>
+            SILVA, Carlos Alberto Pereira da. <em>Cordel – Pulsares: Relógios Cósmicos</em>.
+            Zenodo, 2025. DOI: 10.5281/zenodo.17014320.
+        </p>
+    </div>
+
+    <a
+        class="text-link citation-link"
+        href="https://zenodo.org/records/17014320"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        Acessar publicação no Zenodo →
+    </a>
+</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  
+
+
+  
+  <section class="section didactic-section">
+    <div class="section-inner">
+
+      <div>
+        <p class="eyebrow blue-eyebrow">PROPOSTA DIDÁTICA</p>
+
+        <h2>Do verso à descoberta</h2>
+
+        <p>
+          <em>Radioastronomia em Cordel</em> também explora o potencial educativo
+          da literatura popular como ponto de partida para a aproximação com
+          conceitos científicos.
+        </p>
+
+        <p>
+          A proposta <em>Do verso à descoberta</em> utiliza
+          <em>Pulsares: Relógios Cósmicos</em> como ponto de partida para um percurso
+          de leitura, investigação e reinterpretação, aproximando a linguagem poética
+          do cordel de textos de divulgação científica e de outras possibilidades
+          de exploração interdisciplinar.
+        </p>
+
+        <a class="text-link" href="do-verso-a-descoberta.html">
+          Conheça a proposta didática →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="section-inner">
+
+      <p class="eyebrow blue-eyebrow">PRODUÇÕES ASSOCIADAS</p>
+
+      <h2>Conteúdos e trabalhos em torno do projeto</h2>
+
+      <p>
+        Trabalhos acadêmicos, entrevistas, artigos e outras produções que
+        apresentam, discutem ou ampliam diferentes aspectos do
+        <em>Radioastronomia em Cordel</em>.
+      </p>
+
+      <div class="associated-list">
+
+        <article class="associated-item">
+          <span class="associated-type">TRABALHO EM ANAIS</span>
+
+          <h3>O Cordel na Popularização da Radioastronomia</h3>
+
+          <p>
+            Trabalho apresentado no 6º Simpósio de Pesquisa, Inovação e
+            Pós-Graduação do IFPB que aborda o uso da literatura de cordel
+            como linguagem para a popularização da radioastronomia.
+          </p>
+
+          <a
+            class="text-link"
+            href="https://www.even3.com.br/anais/6-simpif-simposio-de-pesquisa-inovacao-e-pos-graduacao-do-ifpb-551894/1196391-o-cordel-na-popularizacao-da-radioastronomia/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Acessar trabalho →
+          </a>
+        </article>
+
+        <article class="associated-item">
+          <span class="associated-type">ANÁLISE</span>
+
+          <h3>Um cordel esp(ea)cial</h3>
+
+          <p>
+            Roniere Leite Soares analisa <em>Pulsares: Relógios Cósmicos</em>,
+            abordando a aproximação entre literatura popular e radioastronomia,
+            o potencial educativo da obra e sua inserção no conjunto de produções
+            desenvolvidas pelo BERG.
+          </p>
+
+          <p>
+            <strong>Roniere Leite Soares · 2025</strong><br>
+            DOI:
+            <a
+              href="https://doi.org/10.5281/zenodo.17048149"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              10.5281/zenodo.17048149
+            </a>
+          </p>
+
+          <a
+            class="text-link"
+            href="https://zenodo.org/records/17048149"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Acessar publicação →
+          </a>
+        </article>
+
+        <article class="associated-item">
+          <span class="associated-type">MATÉRIA / CLIPPING</span>
+
+          <h3>Da radioastronomia ao cordel: projeto paraibano une ciência, cultura e educação</h3>
+
+          <p>
+            Matéria publicada pelo Portal Tocaia apresenta o trabalho desenvolvido
+            pelo BERG e o ecossistema de produções construído em torno dos pulsares,
+            destacando o <em>Radioastronomia em Cordel</em> como uma das iniciativas
+            que aproximam ciência, cultura e educação.
+          </p>
+
+          <p>
+            <strong>Portal Tocaia</strong>
+          </p>
+
+          <a
+            class="text-link"
+            href="https://tocaiacomunicacao.com.br/da-radioastronomia-ao-cordel-projeto-paraibano-une-ciencia-cultura-e-educacao/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ler matéria original →
+          </a>
+
+          <span aria-hidden="true"> · </span>
+
+          <a
+            class="text-link"
+            href="https://zenodo.org/records/18024892"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Acessar clipping no Zenodo →
+          </a>
+        </article>
+
+        <article class="associated-item">
+          <span class="associated-type">REPORTAGEM DE TV</span>
+
+          <h3>Radioastronomia em Cordel na Rede Ita</h3>
+
+          <p>
+            Reportagem da Rede Ita apresenta o <em>Radioastronomia em Cordel</em>
+            e sua proposta de aproximar radioastronomia, literatura de cordel,
+            cultura e educação.
+          </p>
+
+          <p>
+            <strong>Rede Ita</strong>
+          </p>
+
+          <a
+            class="text-link"
+            href="https://youtu.be/C868KNzjj9s?si=sivWAJnQoSLr-hsD"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Assistir à reportagem →
+          </a>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="section-inner">
+
+      <p class="eyebrow blue-eyebrow">EVENTOS</p>
+
+      <h2>Onde o Radioastronomia em Cordel esteve</h2>
+
+      <p>
+        A trajetória de Radioastronomia em Cordel também se constrói em sua circulação
+        por eventos e atividades de divulgação científica, ampliando os espaços
+        de encontro entre literatura, cultura e radioastronomia.
+      </p>
+
+      <div class="event-list">
+
+        <article class="event-row">
+
+          <div class="event-row-media">
+            <img
+              src="images/cordel/flibo.png"
+              alt="Feira Literária de Boqueirão"
+              onerror="this.style.display='none'"
+            >
+          </div>
+
+          <div>
+            <span class="event-meta">DEZ 2025 · Boqueirão · FLIBO</span>
+
+            <h3>Feira Literária de Boqueirão</h3>
+
+            <p>
+              Pulsares: Relógios Cósmicos, integrou a programação do dia 5 de dezembro da 15ª edição 
+               da Feira Literária de Boqueirão (FLIBO).
+            </p>
+
+            <a class="text-link" href="#">
+              Leia mais →
+            </a>
+          </div>
+
+        </article>
+
+
+        <article class="event-row">
+
+          <div class="event-row-media">
+            <img
+              src="images/cordel/montessori.png"
+              alt="FLIC Leitura Viva"
+              onerror="this.style.display='none'"
+            >
+          </div>
+
+          <div>
+            <span class="event-meta">NOV 2025 · Campina Grande · FLIC</span>
+
+            <h3>Leitura Viva</h3>
+
+            <p>
+              O projeto Leitura Viva, parte integrante da programação da Feira
+              Literária de Campina Grande, levou o cordel Pulsares: Relógios Cósmicos para a escola
+              Semear Montessóri.
+            </p>
+
+            <a class="text-link" href="#">
+              Leia mais →
+            </a>
+          </div>
+
+        </article>
+
+        <article class="event-row">
+
+          <div class="event-row-media">
+            <img
+              src="images/cordel/flipb.png"
+              alt="FLIPB"
+              onerror="this.style.display='none'"
+            >
+          </div>
+
+          <div>
+            <span class="event-meta">OUT 2025 · Fagundes · FLIPB</span>
+
+            <h3>Festas Integradas de Literatura da Paraíba</h3>
+
+            <p>
+              Durante o evento de encerramento do ciclo 2025 das Festas Integradas de Literatura da Paraíba (FLIPB),
+              foi apresentado o Cordel Pulsares: Relógios Cósmicos para os alunos que participaram na cidade de
+              Fagundes
+            </p>
+
+            <a class="text-link" href="#">
+              Leia mais →
+            </a>
+          </div>
+
+        </article>
+
+        <article class="event-row">
+
+          <div class="event-row-media">
+            <img
+              src="images/cordel/flilar.png"
+              alt="FLILAR"
+              onerror="this.style.display='none'"
+            >
+          </div>
+
+          <div>
+            <span class="event-meta">SET 2025 · Lagoa de Roça · FLILAR</span>
+
+            <h3>Festa Literária de Lagoa de Roça</h3>
+
+            <p>
+              Em setembro foi a vez de Pulsares: Relógios Cósmicos desembarcar em São
+              Sebastião de Lagoa de Roça para a Festa Literária Integrada, compartilhando um
+              pouco com os alunos e comunidade o que vem a ser esses miseriosos objetos astronômicos.
+            </p>
+
+            <a class="text-link" href="#">
+              Leia mais →
+            </a>
+          </div>
+
+        </article>
+
+       <article class="event-row">
+
+          <div class="event-row-media">
+            <img
+              src="images/cordel/fliga.png"
+              alt="FLIGA"
+              onerror="this.style.display='none'"
+            >
+          </div>
+
+          <div>
+            <span class="event-meta">JUL 2025 · Galante · FLIGA</span>
+
+            <h3>Festa Literária de Galante</h3>
+
+            <p>
+              O Distrito de Galante marca o início da circulação do projeto "Radioastronomia em Cordel" pelas feiras literárias.
+              O evento faz parte do conjunto de Festas Literárias Integradas coordenadas pela FLIPB.
+            </p>
+
+            <a class="text-link" href="#">
+              Leia mais →
+            </a>
+          </div>
+
+        </article>
+ 
+
+       <article class="event-row">
+
+          <div class="event-row-media">
+            <img
+              src="images/cordel/simpif.png"
+              alt="SIMPIF"
+              onerror="this.style.display='none'"
+            >
+          </div>
+
+          <div>
+            <span class="event-meta">JUL 2025 · João Pessoa · SIMPIF</span>
+
+            <h3>Simpósio de Pesquisa, Inovação e Pós-Graduação</h3>
+
+            <p>
+              Primeira apresentação no meio acadêmico da proposta de radioastronomia em Cordel, 
+              dentro da programação do 6º SIMPIF (Simpósio de Pesquisa, Inovação e Pós-Graduação)
+              promovido pelo IFPB de João Pessoa.
+            </p>
+
+            <a class="text-link" href="#">
+              Leia mais →
+            </a>
+          </div>
+
+        </article>
+
+       <article class="event-row">
+
+          <div class="event-row-media">
+            <img
+              src="images/cordel/sarau.png"
+              alt="Sarau"
+              onerror="this.style.display='none'"
+            >
+          </div>
+
+          <div>
+            <span class="event-meta">MAI 2025 · Campina Grande · Sarau</span>
+
+            <h3>Cordel Pedagógico nas Aulas de Ciências</h3>
+
+            <p>
+              O mês de maio marcou o lançamento do projeto Radioastronomia em Cordel, através
+              do seu primeiro título "Pulsares: Relógios Cósmicos, durante o Sarau promovido
+              pelo Projeto de Extensão da UEPB, Departamento de Física: Cordel Pedagógico na Sala de Aula,
+              realizado no Museu de Artes Populares da Paraíba em Campina Grande.
+            </p>
+
+            <a class="text-link" href="#">
+              Leia mais →
+            </a>
+          </div>
+
+        </article>
+
+        
+      </div>
+
+    </div>
+  </section>
+
+
+</main>
+
+<footer class="site-footer" id="contato">
+
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <img
+          src="images/berg-logo.png"
+          alt="BERG — Brazilian Educational Radioastronomy Group"
+        >
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-label">Sobre o BERG</p>
+
+        <h3>
+          Brazilian Educational<br>
+          Radioastronomy Group
+        </h3>
+
+        <p>
+          Iniciativa dedicada à educação e à divulgação científica por meio
+          da radioastronomia, aproximando ciência, tecnologia e diferentes
+          linguagens de aprendizagem.
+        </p>
+
+        <a class="footer-link" href="sobre.html">
+          Conheça o BERG →
+        </a>
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-label">Iniciativas</p>
+
+        <h3>
+          Radioastronomia, educação<br>
+          e experimentação.
+        </h3>
+
+        <p>
+          Conheça iniciativas, recursos e produções desenvolvidos pelo BERG em
+          diferentes linguagens e contextos educativos.
+        </p>
+
+        <a class="footer-link" href="iniciativas.html">
+          Explorar iniciativas →
+        </a>
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-label">Vínculo institucional</p>
+
+        <h3>
+          Uma iniciativa do Instituto Vinciano de Artes e Ciências
+        </h3>
+
+        <div class="footer-motto">
+          Ars et scientia concordant
+        </div>
+
+        <a class="footer-link" href="https://vinciano.org">
+          Instituto Vinciano →
+        </a>
+
+        <div class="footer-contact">
+          <p class="footer-label">Contato</p>
+          <p>
+            <a href="mailto:berg@vinciano.org">berg@vinciano.org</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        © 2026 Brazilian Educational Radioastronomy Group ·
+        Instituto Vinciano de Artes e Ciências
+      </p>
+    </div>
+
+  </footer>
+
+</body>
+</html>

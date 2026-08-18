@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="BERG &mdash; Brazilian Educational Radioastronomy Group. Radioastronomia, educa&ccedil;&atilde;o e divulga&ccedil;&atilde;o cient&iacute;fica." name="description"/>
+  <title>
+   BERG &mdash; Brazilian Educational Radioastronomy Group
+  </title>
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
+
+    :root {
+      --blue: #2450b8;
+      --deep: #15357f;
+      --ink: #111827;
+      --muted: #5d6675;
+      --white: #ffffff;
+      --soft: #f4f6fa;
+      --line: #dde2ea;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #ffffff;
+      font-family: "DM Sans", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .site-header {
+      height: 96px;
+      padding: 0 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #31509F;
+      border-bottom: 1px solid rgba(255,255,255,.20);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .site-logo {
+      display: block;
+      width: 170px;
+      height: auto;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 34px;
+    }
+
+    .main-nav a {
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    .main-nav a:hover,
+    .main-nav .active {
+      color: #d9e2ff;
+    }
+
+    .menu-toggle {
+      display: none;
+      color: #ffffff;
+      background: none;
+      border: 0;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      padding: 62px 8vw;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(9, 29, 78, .92) 0%,
+          rgba(15, 43, 103, .82) 38%,
+          rgba(18, 52, 122, .48) 66%,
+          rgba(18, 52, 122, .14) 100%
+        ),
+        url("images/hero.png") center 72% / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(6, 18, 48, .04) 0%,
+          rgba(6, 18, 48, .08) 55%,
+          rgba(6, 18, 48, .22) 100%
+        );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(720px, 100%);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #dbe6ff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 700px;
+      margin: 0 0 18px;
+      color: #ffffff;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -.025em;
+    }
+
+    .lead {
+      max-width: 660px;
+      margin: 0 0 28px;
+      color: rgba(255,255,255,.92);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 19px;
+      border: 1px solid #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button-primary {
+      color: var(--deep);
+      background: #ffffff;
+    }
+
+    .hero-secondary {
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .section {
+      padding: 68px 8vw;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-size: clamp(29px, 3vw, 40px);
+      line-height: 1.2;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .blue-eyebrow {
+      color: var(--blue);
+    }
+
+    .blue-panel {
+      padding: 34px;
+      background: var(--blue);
+      color: #ffffff;
+    }
+
+    .blue-panel h3 {
+      margin: 0 0 12px;
+      font-size: 26px;
+    }
+
+    .blue-panel p {
+      margin: 0;
+      color: rgba(255,255,255,.85);
+      font-size: 15px;
+    }
+
+    .projects {
+      background: var(--soft);
+    }
+
+    .section-heading {
+      max-width: 780px;
+      margin-bottom: 30px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      min-height: 260px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      border: 1px solid var(--line);
+    }
+
+    .project-card span {
+      margin-bottom: 12px;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .project-card h3 {
+      margin: 0 0 12px;
+      font-size: 23px;
+    }
+
+    .project-card p {
+      margin: 0 0 20px;
+      font-size: 14px;
+    }
+
+    .text-link {
+      margin-top: auto;
+      color: var(--deep);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .feature-media {
+      min-height: 330px;
+      background:
+        linear-gradient(rgba(12,35,91,.18), rgba(12,35,91,.18)),
+        url("images/berg-bandeira.jpg") center / cover no-repeat;
+    }
+
+    .site-footer {
+      padding: 58px 8vw 20px;
+      color: rgba(255,255,255,.88);
+      background: #31509F;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: .75fr 1.25fr 1.15fr 1.05fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .footer-brand img {
+      display: block;
+      width: 150px;
+      height: auto;
+    }
+
+    .footer-label {
+      margin: 0 0 10px;
+      color: rgba(255,255,255,.78);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .footer-column h3 {
+      margin: 0 0 12px;
+      color: #ffffff;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 21px;
+      line-height: 1.35;
+    }
+
+    .footer-column p {
+      margin: 0 0 14px;
+      color: rgba(255,255,255,.82);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .footer-link {
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+
+    .footer-motto {
+      margin-bottom: 16px;
+      color: #ffffff;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 20px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .footer-contact {
+      margin-top: 20px;
+    }
+
+    .footer-contact a {
+      color: rgba(255,255,255,.92);
+      text-decoration: none;
+    }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 42px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.20);
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      text-align: center;
+      color: rgba(255,255,255,.72);
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+
+
+    .home-news {
+      padding: 68px 8vw;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .home-news-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .home-news-heading {
+      margin-bottom: 18px;
+    }
+
+    .home-news-heading h2 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.25;
+    }
+
+    .news-feature {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+      gap: 38px;
+      align-items: center;
+      margin-bottom: 38px;
+      padding-bottom: 38px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .news-feature-media {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--soft);
+    }
+
+    .news-feature-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .news-meta {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .news-feature-copy h3 {
+      margin: 0 0 12px;
+      font-size: 29px;
+      line-height: 1.25;
+    }
+
+    .news-feature-copy p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .news-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .news-row {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .news-row:first-child {
+      padding-top: 0;
+    }
+
+    .news-row:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .news-row-media {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--soft);
+    }
+
+    .news-row-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .news-row h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      line-height: 1.35;
+    }
+
+    .news-row p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .news-link {
+      color: var(--deep);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .home-news-footer {
+      margin-top: 30px;
+      text-align: right;
+    }
+
+
+    .project-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .project-card-media {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--soft);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-card-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      min-height: 250px;
+    }
+
+    .project-card-body .text-link {
+      margin-top: auto;
+    }
+
+    @media (max-width: 900px) {
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+
+      .footer-brand img {
+        width: 140px;
+      }
+
+      .home-news {
+        padding-left: 7vw;
+        padding-right: 7vw;
+      }
+
+      .news-feature {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .news-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .news-row-media {
+        max-width: 560px;
+      }
+
+      .home-news-footer {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .main-nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .site-header {
+        padding: 0 5vw;
+      }
+
+      .site-logo {
+        width: 160px;
+      }
+
+      .hero {
+        min-height: 500px;
+        padding: 48px 7vw;
+        background-position: 64% 72%;
+      }
+
+      .hero-content {
+        width: min(620px, 100%);
+      }
+
+      .intro-grid,
+      .feature,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding-left: 7vw;
+        padding-right: 7vw;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  
+    @media (max-width: 620px) {
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .site-footer {
+        padding-left: 7vw;
+        padding-right: 7vw;
+      }
+    }
+
+  </style>
+ </head>
+ <body>
+  <header class="site-header">
+   <a aria-label="P&aacute;gina inicial do BERG" class="brand" href="index.html">
+    <img alt="BERG &mdash; Brazilian Educational Radioastronomy Group" class="site-logo" src="images/berg-logo.png"/>
+   </a>
+   <nav aria-label="Navega&ccedil;&atilde;o principal" class="main-nav">
+    <a href="index.html">Início</a>
+    <a href="iniciativas.html">Iniciativas</a>
+    <a href="noticias.html">Not&iacute;cias</a>
+    <a href="publicacoes.html">Publicações</a>
+    <a href="acervo.html">Acervo</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contato.html">Contato</a>
+   </nav>
+   <button aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" type="button">
+    ☰
+   </button>
+  </header>
+  <main>
+   <section class="hero">
+    <div class="hero-content">
+     <p class="eyebrow">
+      RADIOASTRONOMIA &middot; EDUCA&Ccedil;&Atilde;O &middot; DIVULGA&Ccedil;&Atilde;O CIENT&Iacute;FICA
+     </p>
+     <h1>
+      Explorando o invis&iacute;vel atrav&eacute;s da educa&ccedil;&atilde;o
+     </h1>
+     <p class="lead">
+      O BERG desenvolve experi&ecirc;ncias, recursos e produ&ccedil;&otilde;es que aproximam radioastronomia, ci&ecirc;ncia, tecnologia e diferentes linguagens de aprendizagem.
+     </p>
+     <div class="hero-actions">
+      <a class="button button-primary" href="sobre.html">
+         Saiba mais
+      </a>
+     </div>
+    </div>
+   </section>
+
+
+    <section class="home-news">
+
+      <div class="home-news-inner">
+
+        <div class="home-news-heading">
+          <p class="eyebrow blue-eyebrow">ÚLTIMAS</p>
+        </div>
+
+        <article class="news-feature">
+
+          <div class="news-feature-media">
+            <img
+              src="images/noticias/artigo-urania.png"
+              alt="Artigo Urania"
+              onerror="this.style.display='none'"
+            >
+          </div>
+
+          <div class="news-feature-copy">
+            <span class="news-meta">Agosto 2026 · Internacional</span>
+
+            <h3>BERG publica artigo sobre astronomia brasileira em revista na Polônia</h3>
+
+            <p>
+              Artigo produzido pelo BERG sobre a astronomia brasileira é publicado
+              na tradicional revista Urania, da Sociedade Polonesa de Astronomia, 
+              ampliando a presença internacional das ações de divulgação científica do grupo.
+            </p>
+
+            <a class="news-link" href="radioastronomia-em-cordel.html">
+              Saiba mais →
+            </a>
+          </div>
+
+        </article>
+
+        <div class="news-list">
+
+          <article class="news-row">
+
+            <div class="news-row-media">
+              <img
+                src="images/noticias/british-science-festival.png"
+                alt="British Science Festival"
+                onerror="this.style.display='none'"
+              >
+            </div>
+
+            <div>
+              <span class="news-meta">Agosto 2026 · Internacional · Audiovisual</span>
+
+              <h3>Curta Pulsares integra mostra no British Science Festival, na Inglaterra</h3>
+
+              <p>
+                O curta-metragem Pulsares, produzido pelo BERG, integrará a mostra internacional
+                 Matter, Light, Frame, dedicada a produções audiovisuais que exploram diferentes 
+                 perspectivas sobre a física. A exibição acontece em setembro durante o British 
+                 Science Festival 2026, em Southampton, na Inglaterra.
+              </p>
+
+              <a class="news-link" href="#">
+                Saiba mais →
+              </a>
+            </div>
+
+          </article>
+
+          <article class="news-row">
+
+            <div class="news-row-media">
+              <img
+                src="images/noticias/cosmic-threads.png"
+                alt="Cosmic Thread no Jodrell Bank"
+                onerror="this.style.display='none'"
+              >
+            </div>
+
+            <div>
+              <span class="news-meta">Janeiro 2026 · Internacional · Artes</span>
+
+              <h3>Bordado do BERG integra projeto comemorativo do Jodrell Bank, na Inglaterra</h3>
+
+              <p>
+                Um bordado produzido pelo BERG integrou o Cosmic Threads, 
+                projeto internacional criado em celebração aos 80 anos do 
+                Jodrell Bank. Inspirada na radioastronomia, a obra brasileira 
+                passou a compor o conjunto de trabalhos têxteis reunidos 
+                pelo histórico observatório britânico.
+              </p>
+
+              <a class="news-link" href="https://www.jodrellbank.net/wp-content/uploads/2026/02/Cosmic-Threads-Booklet.pdf">
+                Saiba mais →
+              </a>
+            </div>
+
+          </article>
+
+
+ 
+        </div>
+
+        <div class="home-news-footer">
+          <a class="news-link" href="noticias.html">
+            Ver todas as notícias →
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+   <section class="section projects" id="iniciativas">
+
+      <div class="section-inner">
+
+        <div class="section-heading">
+          <p class="eyebrow blue-eyebrow">INICIATIVAS</p>
+
+          <h2>Radioastronomia em diferentes linguagens</h2>
+
+          <p>
+            Diferentes caminhos de criação, educação, divulgação e experimentação
+            desenvolvidos pelo BERG para explorar a radioastronomia e aproximá-la
+            de diferentes públicos.
+          </p>
+        </div>
+
+        <div class="project-grid">
+
+      <article class="project-card">
+
+        <div class="project-card-media">
+          <img
+            src="images/iniciativas/cordel-pulsares.png"
+            alt="Radioastronomia em Cordel"
+          >
+        </div>
+
+        <div class="project-card-body">
+          <span>Literatura · Ciência · Educação</span>
+
+          <h3>Radioastronomia em Cordel</h3>
+
+          <p>
+            Projeto que utiliza a literatura de cordel para apresentar histórias, personagens, descobertas e conceitos relacionados à radioastronomia, aproximando ciência e cultura popular.
+          </p>
+
+          <a class="text-link" href="radioastronomia-em-cordel.html">
+            Conheça →
+          </a>
+        </div>
+
+      </article>
+      <article class="project-card">
+
+        <div class="project-card-media">
+          <img
+            src="images/iniciativas/cosmic-threads.png"
+            alt="Scratch for Radio Astronomy"
+          >
+        </div>
+
+        <div class="project-card-body">
+          <span>Bordado · Artesanato · Internacionalização</span>
+
+          <h3>Cosmic Threads - Jodrell Bank</h3>
+
+          <p>
+            Bordado baseado em uma silhueta de radiotelescópio criada pelo Instituto Vinciano a partir da linguagem geométrica do Tangram. A obra integrou o projeto internacional Cosmic Threads: A Community Quilt Project, realizado em comemoração aos 80 anos do Jodrell Bank, na Inglaterra, reunindo criações têxteis inspiradas no observatório, na radioastronomia e no Universo.
+          </p>
+
+          <a class="text-link" href="#">
+            Conheça →
+          </a>
+        </div>
+
+      </article>
+      <article class="project-card">
+
+        <div class="project-card-media">
+          <img
+            src="images/iniciativas/scratch.png"
+            alt="Pulsares"
+          >
+        </div>
+
+        <div class="project-card-body">
+          <span>Educação · Programação</span>
+
+          <h3>Scratch for Radio Astronomy</h3>
+
+          <p>
+            Conjunto de produções desenvolvidas na plataforma Scratch, do MIT, que explora conceitos da radioastronomia por meio da programação criativa e de experiências interativas. A iniciativa aproxima ciência, tecnologia e educação, transformando temas da radioastronomia em recursos digitais voltados à aprendizagem e à experimentação.
+          </p>
+
+          <a class="text-link" href="#">
+            Conheça →
+          </a>
+        </div>
+
+      </article>
+
+        </div>
+
+        <p style="margin: 28px 0 0; text-align: right;">
+          <a class="text-link" href="iniciativas.html">
+            Ver todas as iniciativas →
+          </a>
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+  <footer class="site-footer" id="contato">
+
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <img
+          src="images/berg-logo.png"
+          alt="BERG — Brazilian Educational Radioastronomy Group"
+        >
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-label">Sobre o BERG</p>
+
+        <h3>
+          Brazilian Educational<br>
+          Radioastronomy Group
+        </h3>
+
+        <p>
+          Iniciativa dedicada à educação e à divulgação científica por meio
+          da radioastronomia, aproximando ciência, tecnologia e diferentes
+          linguagens de aprendizagem.
+        </p>
+
+        <a class="footer-link" href="sobre.html">
+          Conheça o BERG →
+        </a>
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-label">Iniciativas</p>
+
+        <h3>
+          Radioastronomia, educação<br>
+          e experimentação.
+        </h3>
+
+        <p>
+          Conheça iniciativas, recursos e produções desenvolvidos pelo BERG em
+          diferentes linguagens e contextos educativos.
+        </p>
+
+        <a class="footer-link" href="iniciativas.html">
+          Explorar iniciativas →
+        </a>
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-label">Vínculo institucional</p>
+
+        <h3>
+          Uma iniciativa do Instituto Vinciano de Artes e Ciências
+        </h3>
+
+        <div class="footer-motto">
+          Ars et scientia concordant
+        </div>
+
+        <a class="footer-link" href="https://vinciano.org">
+          Instituto Vinciano →
+        </a>
+
+        <div class="footer-contact">
+          <p class="footer-label">Contato</p>
+          <p>
+            <a href="mailto:berg@vinciano.org">berg@vinciano.org</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        © 2026 Brazilian Educational Radioastronomy Group ·
+        Instituto Vinciano de Artes e Ciências
+      </p>
+    </div>
+
+  </footer>
+ </body>
+</html>

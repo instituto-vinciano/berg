@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Conheça o BERG — Brazilian Educational Radioastronomy Group, iniciativa do Instituto Vinciano de Artes e Ciências.">
+  <title>Sobre — BERG</title>
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
+
+    :root {
+      --blue: #2450b8;
+      --deep: #15357f;
+      --ink: #111827;
+      --muted: #5d6675;
+      --white: #ffffff;
+      --soft: #f4f6fa;
+      --line: #dde2ea;
+      --header-blue: #31509F;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #ffffff;
+      font-family: "DM Sans", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .site-header {
+      height: 96px;
+      padding: 0 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--header-blue);
+      border-bottom: 1px solid rgba(255,255,255,.20);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .site-logo {
+      display: block;
+      width: 170px;
+      height: auto;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 34px;
+    }
+
+    .main-nav a {
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    .main-nav a:hover,
+    .main-nav .active {
+      color: #d9e2ff;
+    }
+
+    .menu-toggle {
+      display: none;
+      color: #ffffff;
+      background: none;
+      border: 0;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .about-hero {
+      padding: 42px 8vw 38px;
+      background: var(--deep);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .about-hero > div {
+      max-width: 860px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #dbe6ff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .blue-eyebrow {
+      color: var(--blue);
+    }
+
+    .about-hero h1 {
+      margin: 0;
+      color: #ffffff;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 36px;
+      line-height: 1.25;
+    }
+
+    .about-hero p {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: rgba(255,255,255,.80);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .section {
+      padding: 68px 8vw;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 54px;
+      align-items: start;
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 34px;
+      line-height: 1.3;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .institutional-panel {
+      padding: 34px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+    }
+
+    .institutional-panel h3 {
+      margin: 0 0 12px;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+
+    .institutional-panel p {
+      margin: 0 0 16px;
+      font-size: 15px;
+    }
+
+    .text-link {
+      color: var(--deep);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .text-link:hover {
+      text-decoration: underline;
+    }
+
+    .mvv {
+      background: var(--soft);
+    }
+
+    .mvv-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .mvv-card {
+      padding: 30px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+    }
+
+    .mvv-card h3 {
+      margin: 0 0 12px;
+      color: var(--deep);
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 23px;
+    }
+
+    .mvv-card p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .practice-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 54px;
+      align-items: start;
+    }
+
+    .practice-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 26px;
+      margin-top: 8px;
+    }
+
+    .practice-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .languages {
+      background: var(--soft);
+    }
+
+    .language-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .language-tag {
+      padding: 10px 14px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      color: var(--deep);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .motto-band {
+      padding: 54px 8vw;
+      text-align: center;
+      background: var(--header-blue);
+      color: #ffffff;
+    }
+
+    .motto-band p {
+      margin: 0 0 8px;
+      color: rgba(255,255,255,.72);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .motto-band h2 {
+      margin: 0;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.3;
+    }
+
+    .site-footer {
+      padding: 58px 8vw 20px;
+      color: rgba(255,255,255,.88);
+      background: var(--header-blue);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: .75fr 1.25fr 1.15fr 1.05fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .footer-brand img {
+      display: block;
+      width: 150px;
+      height: auto;
+    }
+
+    .footer-label {
+      margin: 0 0 10px;
+      color: rgba(255,255,255,.78);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .footer-column h3 {
+      margin: 0 0 12px;
+      color: #ffffff;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 21px;
+      line-height: 1.35;
+    }
+
+    .footer-column p {
+      margin: 0 0 14px;
+      color: rgba(255,255,255,.82);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .footer-link {
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+
+    .footer-motto {
+      margin-bottom: 16px;
+      color: #ffffff;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 20px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .footer-contact {
+      margin-top: 20px;
+    }
+
+    .footer-contact a {
+      color: rgba(255,255,255,.92);
+      text-decoration: none;
+    }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 42px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.20);
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      text-align: center;
+      color: rgba(255,255,255,.72);
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .main-nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .site-header {
+        padding: 0 5vw;
+      }
+
+      .site-logo {
+        width: 160px;
+      }
+
+      .intro-grid,
+      .practice-grid,
+      .mvv-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .practice-list {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding-left: 7vw;
+        padding-right: 7vw;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+
+      .footer-brand img {
+        width: 140px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .site-footer {
+        padding-left: 7vw;
+        padding-right: 7vw;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+   <a aria-label="P&aacute;gina inicial do BERG" class="brand" href="index.html">
+    <img alt="BERG &mdash; Brazilian Educational Radioastronomy Group" class="site-logo" src="images/berg-logo.png"/>
+   </a>
+   <nav aria-label="Navega&ccedil;&atilde;o principal" class="main-nav">
+    <a href="index.html">Início</a>
+    <a href="iniciativas.html">Iniciativas</a>
+    <a href="noticias.html">Not&iacute;cias</a>
+    <a href="publicacoes.html">Publicações</a>
+    <a href="acervo.html">Acervo</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contato.html">Contato</a>
+   </nav>
+   <button aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" type="button">
+    ☰
+   </button>
+  </header>
+
+<main>
+
+  <section class="about-hero">
+    <div>
+      <p class="eyebrow">SOBRE</p>
+      <h1>Brazilian Educational Radioastronomy Group</h1>
+      <p>
+        O BERG desenvolve experiências de educação e divulgação científica
+        que utilizam a radioastronomia como ponto de encontro entre ciência,
+        tecnologia, arte e diferentes linguagens de aprendizagem.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner intro-grid">
+
+      <div>
+        <p class="eyebrow blue-eyebrow">O BERG</p>
+        <h2>Explorando o invisível através da educação</h2>
+
+        <p>
+          O Brazilian Educational Radioastronomy Group — BERG — atua na criação
+          e no desenvolvimento de experiências educativas voltadas à radioastronomia,
+          buscando aproximar conceitos científicos de estudantes, educadores e público geral.
+        </p>
+
+        <p>
+          Sua proposta parte da ideia de que a radioastronomia pode ser explorada
+          não apenas por meio das ciências exatas, mas também através da literatura,
+          das artes visuais, do audiovisual, da música, do teatro, dos jogos
+          e de outras formas de expressão e aprendizagem.
+        </p>
+      </div>
+
+      <aside class="institutional-panel">
+        <p class="eyebrow blue-eyebrow">VÍNCULO INSTITUCIONAL</p>
+
+        <h3>Uma iniciativa do Instituto Vinciano de Artes e Ciências</h3>
+
+        <p>
+          O BERG integra o Instituto Vinciano de Artes e Ciências e compartilha
+          de sua proposta de aproximar arte, ciência, cultura e educação por meio
+          da criação, da investigação e da circulação de conhecimento.
+        </p>
+
+        <a class="text-link" href="https://vinciano.org">
+          Conheça o Instituto Vinciano →
+        </a>
+      </aside>
+
+    </div>
+  </section>
+
+  <section class="section mvv">
+    <div class="section-inner">
+
+      <p class="eyebrow blue-eyebrow">PROPÓSITO</p>
+      <h2>Missão, visão e valores</h2>
+
+      <div class="mvv-grid">
+
+        <article class="mvv-card">
+          <h3>Missão</h3>
+          <p>
+            Promover a educação científica por meio da radioastronomia,
+            inspirando a curiosidade, a investigação e novas gerações
+            interessadas pela ciência.
+          </p>
+        </article>
+
+        <article class="mvv-card">
+          <h3>Visão</h3>
+          <p>
+            Ser uma referência em educação científica no campo
+            da radioastronomia.
+          </p>
+        </article>
+
+        <article class="mvv-card">
+          <h3>Valores</h3>
+          <p>
+            Inovação, colaboração e educação inclusiva orientam
+            o desenvolvimento das iniciativas do BERG.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner practice-grid">
+
+      <div>
+        <p class="eyebrow blue-eyebrow">COMO ATUAMOS</p>
+        <h2>Pesquisa, ensino e divulgação científica</h2>
+
+        <p>
+          O BERG articula diferentes formas de participação e produção,
+          buscando transformar conteúdos de radioastronomia em experiências
+          acessíveis, experimentais e culturalmente diversas.
+        </p>
+      </div>
+
+      <div class="practice-list">
+        <div class="practice-item">Oficinas</div>
+        <div class="practice-item">Palestras</div>
+        <div class="practice-item">Recursos educativos</div>
+        <div class="practice-item">Exposições</div>
+        <div class="practice-item">Cursos</div>
+        <div class="practice-item">Participação em eventos</div>
+        <div class="practice-item">Sessões de observação</div>
+        <div class="practice-item">Ações de divulgação científica</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section languages">
+    <div class="section-inner">
+
+      <p class="eyebrow blue-eyebrow">INTERDISCIPLINARIDADE</p>
+      <h2>Radioastronomia em diferentes linguagens</h2>
+
+      <p>
+        A proposta educativa do BERG conecta a radioastronomia a diferentes áreas
+        do conhecimento e formas de expressão, ampliando as possibilidades
+        de criação, participação e aprendizagem.
+      </p>
+
+      <div class="language-cloud">
+        <span class="language-tag">Matemática</span>
+        <span class="language-tag">Física</span>
+        <span class="language-tag">Engenharia</span>
+        <span class="language-tag">Literatura</span>
+        <span class="language-tag">Música</span>
+        <span class="language-tag">Teatro</span>
+        <span class="language-tag">Jogos</span>
+        <span class="language-tag">Artes Visuais</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="motto-band">
+    <p>LEMA DO BERG</p>
+    <h2>Explorando o invisível através da educação</h2>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="contato">
+
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <img
+          src="images/berg-logo.png"
+          alt="BERG — Brazilian Educational Radioastronomy Group"
+        >
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-label">Sobre o BERG</p>
+
+        <h3>
+          Brazilian Educational<br>
+          Radioastronomy Group
+        </h3>
+
+        <p>
+          Iniciativa dedicada à educação e à divulgação científica por meio
+          da radioastronomia, aproximando ciência, tecnologia e diferentes
+          linguagens de aprendizagem.
+        </p>
+
+        <a class="footer-link" href="sobre.html">
+          Conheça o BERG →
+        </a>
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-label">Iniciativas</p>
+
+        <h3>
+          Radioastronomia, educação<br>
+          e experimentação.
+        </h3>
+
+        <p>
+          Conheça iniciativas, recursos e produções desenvolvidos pelo BERG em
+          diferentes linguagens e contextos educativos.
+        </p>
+
+        <a class="footer-link" href="iniciativas.html">
+          Explorar iniciativas →
+        </a>
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-label">Vínculo institucional</p>
+
+        <h3>
+          Uma iniciativa do Instituto Vinciano de Artes e Ciências
+        </h3>
+
+        <div class="footer-motto">
+          Ars et scientia concordant
+        </div>
+
+        <a class="footer-link" href="https://vinciano.org">
+          Instituto Vinciano →
+        </a>
+
+        <div class="footer-contact">
+          <p class="footer-label">Contato</p>
+          <p>
+            <a href="mailto:berg@vinciano.org">berg@vinciano.org</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        © 2026 Brazilian Educational Radioastronomy Group ·
+        Instituto Vinciano de Artes e Ciências
+      </p>
+    </div>
+
+  </footer>
+
+</body>
+</html>
