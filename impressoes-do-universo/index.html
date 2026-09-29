@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Impressões do Universo — ação educativa e obra coletiva do BERG a partir de uma visualização do COBE/DMR.">
+  <title>Impressões do Universo — BERG</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Baskerville:wght@400;700&display=swap');
+
+    :root {
+      --blue: #2450b8;
+      --deep: #15357f;
+      --ink: #111827;
+      --muted: #5d6675;
+      --white: #ffffff;
+      --soft: #f4f6fa;
+      --line: #dde2ea;
+      --header-blue: #31509F;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #ffffff;
+      font-family: "DM Sans", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .site-header {
+      height: 96px;
+      padding: 0 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--header-blue);
+      border-bottom: 1px solid rgba(255,255,255,.20);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .brand { display: flex; align-items: center; text-decoration: none; }
+    .site-logo { display: block; width: 170px; height: auto; }
+
+    .main-nav { display: flex; gap: 34px; }
+    .main-nav a {
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .06em;
+    }
+    .main-nav a:hover { color: #d9e2ff; }
+
+    .menu-toggle {
+      display: none;
+      color: #ffffff;
+      background: none;
+      border: 0;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      padding: 60px 8vw;
+      overflow: hidden;
+      background: var(--deep);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        90deg,
+        rgba(10,31,82,.96) 0%,
+        rgba(18,55,125,.90) 32%,
+        rgba(32,82,157,.64) 55%,
+        rgba(32,82,157,.18) 80%,
+        rgba(32,82,157,.06) 100%
+      );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #dbe6ff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .blue-eyebrow { color: var(--blue); }
+
+    .hero h1 {
+      margin: 0;
+      color: #ffffff;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 44px;
+      line-height: 1.18;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 16px 0 0;
+      color: rgba(255,255,255,.84);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .section {
+      padding: 68px 8vw;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section.soft { background: var(--soft); }
+    .section-inner { max-width: 1120px; margin: 0 auto; }
+
+    .intro-grid,
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 54px;
+      align-items: start;
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 34px;
+      line-height: 1.3;
+    }
+
+    .section h3 {
+      margin: 0 0 12px;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .concept-panel {
+      padding: 32px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+    }
+
+    .concept-panel p { margin: 0; font-size: 15px; }
+
+    .numbers {
+      margin: 18px 0 0;
+      color: var(--deep) !important;
+      font-size: 17px !important;
+      font-weight: 800;
+      line-height: 1.8 !important;
+    }
+
+    .media {
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid var(--line);
+    }
+
+    .media img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .caption {
+      margin: 10px 0 0 !important;
+      color: var(--muted);
+      font-size: 13px !important;
+      line-height: 1.55 !important;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .process-card {
+      padding: 28px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+    }
+
+    .process-number {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    .process-card h3 { font-size: 21px; }
+    .process-card p { margin: 0; font-size: 15px; }
+
+    .site-footer {
+      padding: 58px 8vw 20px;
+      color: rgba(255,255,255,.88);
+      background: var(--header-blue);
+      border-top: 1px solid rgba(255,255,255,.20);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: .75fr 1.25fr 1.15fr 1.05fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .footer-brand img { display: block; width: 150px; height: auto; }
+    .footer-label {
+      margin: 0 0 10px;
+      color: rgba(255,255,255,.78);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .footer-column h3 {
+      margin: 0 0 12px;
+      color: #ffffff;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 21px;
+      line-height: 1.35;
+    }
+
+    .footer-column p {
+      margin: 0 0 14px;
+      color: rgba(255,255,255,.82);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .footer-link {
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .footer-motto {
+      margin-bottom: 16px;
+      color: #ffffff;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 20px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .footer-contact { margin-top: 20px; }
+    .footer-contact a { color: rgba(255,255,255,.92); text-decoration: none; }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 42px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.20);
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      text-align: center;
+      color: rgba(255,255,255,.72);
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .main-nav { display: none; }
+      .main-nav.mobile-open {
+        display: flex;
+        position: absolute;
+        top: 96px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        padding: 12px 6vw 18px;
+        background: var(--header-blue);
+      }
+      .main-nav.mobile-open a { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+      .menu-toggle { display: block; }
+      .intro-grid, .image-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .hero { min-height: 460px; padding: 50px 7vw; }
+      .hero h1 { font-size: 38px; }
+    }
+
+    @media (max-width: 620px) {
+      .section { padding-left: 7vw; padding-right: 7vw; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .site-footer { padding-left: 7vw; padding-right: 7vw; }
+      .hero h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <a aria-label="Página inicial do BERG" class="brand" href="../index.html">
+      <img alt="BERG — Brazilian Educational Radioastronomy Group" class="site-logo" src="../images/berg-logo.png">
+    </a>
+
+    <nav aria-label="Navegação principal" class="main-nav">
+      <a href="../index.html">Início</a>
+      <a href="../iniciativas.html">Iniciativas</a>
+      <a href="../noticias.html">Notícias</a>
+      <a href="../publicacoes.html">Publicações</a>
+      <a href="../acervo.html">Acervo</a>
+      <a href="../sobre.html">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <button aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" type="button">☰</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <img class="hero-image" src="simulacao-guache.png" alt="" aria-hidden="true">
+
+      <div class="hero-content">
+        <p class="eyebrow">ARTE · CIÊNCIA · PARTICIPAÇÃO</p>
+        <h1>Impressões do Universo</h1>
+        <p>
+          Uma obra coletiva que transforma uma visualização científica do universo
+          em experiência artística, educativa e participativa.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner intro-grid">
+        <div>
+          <p class="eyebrow blue-eyebrow">A PROPOSTA</p>
+          <h2>Do dado científico à construção coletiva</h2>
+
+          <p>
+            <em>Impressões do Universo</em> é uma ação educativa desenvolvida pelo
+            Brazilian Educational Radioastronomy Group (BERG), iniciativa do Instituto
+            Vinciano de Artes e Ciências. A proposta parte de uma visualização do céu
+            produzida a partir dos dados do instrumento DMR da missão COBE e a converte
+            em uma matriz de cores reconstruída coletivamente.
+          </p>
+
+          <p>
+            Cada participante contribui com uma pequena parte da imagem por meio de
+            impressões manuais coloridas. Isoladamente, cada marca é apenas um fragmento;
+            reunidas, elas revelam uma representação do universo e tornam visível a
+            relação entre dados, imagem, interpretação e construção coletiva do conhecimento.
+          </p>
+        </div>
+
+        <aside class="concept-panel">
+          <p class="eyebrow blue-eyebrow">UMA IMAGEM · MUITAS PARTICIPAÇÕES</p>
+          <h3>O universo construído ponto a ponto</h3>
+          <p class="numbers">60 × 30 pontos<br>1.800 impressões<br>72 módulos</p>
+          <p>
+            A imagem completa é dividida em módulos que podem ser produzidos em diferentes
+            ações. Cada nova participação passa a integrar uma mesma obra coletiva.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="section-inner image-grid">
+        <div class="media">
+          <img src="cobe-dmr.png" alt="Visualizações históricas do céu em micro-ondas, incluindo COBE/DMR">
+        </div>
+
+        <div>
+          <p class="eyebrow blue-eyebrow">A IMAGEM DE REFERÊNCIA</p>
+          <h2>COBE e o universo em micro-ondas</h2>
+          <p>
+            A matriz utilizada na ação tem como referência uma visualização do céu associada
+            ao Differential Microwave Radiometer (DMR), um dos instrumentos da missão
+            Cosmic Background Explorer (COBE).
+          </p>
+          <p>
+            A visualização científica é reinterpretada em uma paleta reduzida de cores e
+            convertida em uma grade modular. Essa transformação permite que uma imagem
+            produzida a partir de dados astronômicos seja reconstruída manualmente por
+            diferentes participantes.
+          </p>
+          <p class="caption">
+            Imagem de referência utilizada no desenvolvimento da matriz visual da atividade.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <p class="eyebrow blue-eyebrow">COMO ACONTECE</p>
+        <h2>Da observação à impressão</h2>
+
+        <div class="process-grid">
+          <article class="process-card">
+            <span class="process-number">01</span>
+            <h3>Observar</h3>
+            <p>
+              O participante entra em contato com a imagem astronômica e com o contexto
+              científico que deu origem à visualização.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <span class="process-number">02</span>
+            <h3>Interpretar</h3>
+            <p>
+              Um pequeno módulo da matriz traduz parte da imagem em uma sequência de cores,
+              permitindo perceber como uma representação complexa pode ser decomposta.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <span class="process-number">03</span>
+            <h3>Construir</h3>
+            <p>
+              Cada participante imprime sua contribuição. Os módulos são reunidos
+              progressivamente até formar a imagem coletiva completa.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="section-inner image-grid">
+        <div>
+          <p class="eyebrow blue-eyebrow">A OBRA</p>
+          <h2>Uma imagem que cresce a cada encontro</h2>
+          <p>
+            <em>Impressões do Universo</em> não nasce pronta. Sua forma final depende
+            das pessoas que participam de sua construção. As diferenças naturais entre
+            as impressões, intensidades e texturas permanecem visíveis como parte da obra.
+          </p>
+          <p>
+            Assim, uma visualização científica originalmente produzida por instrumentos
+            e processamento de dados passa por outra camada de interpretação: a experiência
+            humana de reconstruí-la coletivamente.
+          </p>
+        </div>
+
+        <div class="media">
+          <img src="simulacao-guache.png" alt="Simulação da composição final de Impressões do Universo">
+        </div>
+      </div>
+    </section>
+</main>
+
+  <footer class="site-footer" id="contato">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="../images/berg-logo.png" alt="BERG — Brazilian Educational Radioastronomy Group">
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-label">Sobre o BERG</p>
+        <h3>Brazilian Educational<br>Radioastronomy Group</h3>
+        <p>
+          Iniciativa dedicada à educação e à divulgação científica por meio da
+          radioastronomia, aproximando ciência, tecnologia e diferentes linguagens
+          de aprendizagem.
+        </p>
+        <a class="footer-link" href="../sobre.html">Conheça o BERG →</a>
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-label">Iniciativas</p>
+        <h3>Radioastronomia, educação<br>e experimentação.</h3>
+        <p>
+          Conheça iniciativas, recursos e produções desenvolvidos pelo BERG em
+          diferentes linguagens e contextos educativos.
+        </p>
+        <a class="footer-link" href="../iniciativas.html">Explorar iniciativas →</a>
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-label">Vínculo institucional</p>
+        <h3>Uma iniciativa do Instituto Vinciano de Artes e Ciências</h3>
+        <div class="footer-motto">Ars et scientia concordant</div>
+        <a class="footer-link" href="https://vinciano.org">Instituto Vinciano →</a>
+
+        <div class="footer-contact">
+          <p class="footer-label">Contato</p>
+          <p><a href="mailto:berg@vinciano.org">berg@vinciano.org</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Brazilian Educational Radioastronomy Group · Instituto Vinciano de Artes e Ciências</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener('click', () => {
+        const open = mainNav.classList.toggle('mobile-open');
+        menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  </script>
+</body>
+</html>
