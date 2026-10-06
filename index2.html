@@ -1248,7 +1248,19 @@ img{max-width:100%}
 
   <script src="assets/script.js"></script>
 
-  
+  <!-- Fallback do menu móvel caso assets/script.js ainda use outra implementação -->
+  <script>
+    (function(){
+      const button = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.main-nav');
+      if(!button || !nav) return;
+      button.addEventListener('click', function(){
+        nav.classList.toggle('mobile-open');
+        const open = nav.classList.contains('mobile-open');
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    })();
+  </script>
 
 
 <script src="noticias/noticias.js"></script>
