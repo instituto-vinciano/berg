@@ -338,6 +338,33 @@
       .hero h1 { font-size: 34px; }
     }
   </style>
+
+<style id="berg-shell-impressoes-current">
+.header-right{display:flex;align-items:center;gap:24px}
+.site-header .main-nav{display:flex;gap:34px;align-items:center}
+.site-header .main-nav a:hover,.site-header .main-nav a.active{color:#d9e2ff}
+.lang-switch{display:flex;align-items:center;gap:7px;padding-left:16px;border-left:1px solid rgba(255,255,255,.35);font-size:13px;font-weight:700}
+.lang-switch a{color:#fff;text-decoration:none}
+
+.footer-container{max-width:1120px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.05fr .7fr .85fr 1.15fr;gap:44px;align-items:start}
+.footer-brand img{width:185px}
+.footer-brand .footer-motto{margin:16px 0 0;font-family:"DM Sans",Arial,sans-serif;font-size:14px;font-style:normal;line-height:1.55}
+.footer-nav{display:grid;gap:8px}
+.footer-nav a,.footer-column a,.footer-column p,.footer-institute a{color:rgba(255,255,255,.9);font-size:14px;text-decoration:none}
+.footer-institute img{display:block;width:220px;max-width:100%;height:auto;margin:0 0 12px}
+.institute-motto{margin:0 0 12px;color:#fff;font-size:14px;font-style:italic}
+.footer-bottom{max-width:none;margin:34px 0 0;padding-top:18px;text-align:left;font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-style:normal}
+
+@media(max-width:900px){
+ .site-header .main-nav{display:none}
+ .site-header .main-nav.mobile-open{display:flex}
+ .lang-switch{display:none}
+ .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){.footer-grid{grid-template-columns:1fr}}
+</style>
+
 </head>
 
 <body>
@@ -345,18 +372,18 @@
     <a aria-label="Página inicial do BERG" class="brand" href="../index.html">
       <img alt="BERG — Brazilian Educational Radioastronomy Group" class="site-logo" src="../images/berg-logo.png">
     </a>
-
-    <nav aria-label="Navegação principal" class="main-nav">
-      <a href="../index.html">Início</a>
-      <a href="../iniciativas.html">Iniciativas</a>
-      <a href="../noticias.html">Notícias</a>
-      <a href="../publicacoes.html">Publicações</a>
-      <a href="../acervo.html">Acervo</a>
-      <a href="../sobre.html">Sobre</a>
-      <a href="#contato">Contato</a>
-    </nav>
-
-    <button aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" type="button">☰</button>
+    <div class="header-right">
+      <nav aria-label="Navegação principal" class="main-nav">
+        <a href="../index.html">Início</a>
+        <a class="active" href="../producoes.html">Produções</a>
+        <a href="../noticias/index.html">Notícias</a>
+        <a href="../sobre.html">Sobre</a>
+      </nav>
+      <div class="lang-switch" aria-label="Idioma">
+        <a href="index.html">PT</a><span>|</span><a href="../en/index.html">EN</a>
+      </div>
+      <button aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" type="button">☰</button>
+    </div>
   </header>
 
   <main>
@@ -495,60 +522,38 @@
 </main>
 
   <footer class="site-footer" id="contato">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <img src="../images/berg-logo.png" alt="BERG — Brazilian Educational Radioastronomy Group">
-      </div>
-
-      <div class="footer-column">
-        <p class="footer-label">Sobre o BERG</p>
-        <h3>Brazilian Educational<br>Radioastronomy Group</h3>
-        <p>
-          Iniciativa dedicada à educação e à divulgação científica por meio da
-          radioastronomia, aproximando ciência, tecnologia e diferentes linguagens
-          de aprendizagem.
-        </p>
-        <a class="footer-link" href="../sobre.html">Conheça o BERG →</a>
-      </div>
-
-      <div class="footer-column">
-        <p class="footer-label">Iniciativas</p>
-        <h3>Radioastronomia, educação<br>e experimentação.</h3>
-        <p>
-          Conheça iniciativas, recursos e produções desenvolvidos pelo BERG em
-          diferentes linguagens e contextos educativos.
-        </p>
-        <a class="footer-link" href="../iniciativas.html">Explorar iniciativas →</a>
-      </div>
-
-      <div class="footer-column">
-        <p class="footer-label">Vínculo institucional</p>
-        <h3>Uma iniciativa do Instituto Vinciano de Artes e Ciências</h3>
-        <div class="footer-motto">Ars et scientia concordant</div>
-        <a class="footer-link" href="https://vinciano.org">Instituto Vinciano →</a>
-
-        <div class="footer-contact">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/berg-logo.png" alt="BERG — Brazilian Educational Radioastronomy Group">
+          <p class="footer-motto">Explorando o invisível através da educação.</p>
+        </div>
+        <div class="footer-column">
+          <p class="footer-label">Navegação</p>
+          <div class="footer-nav">
+            <a href="../index.html">Início</a>
+            <a href="../producoes.html">Produções</a>
+            <a href="../noticias/index.html">Notícias</a>
+            <a href="../sobre.html">Sobre</a>
+          </div>
+        </div>
+        <div class="footer-column">
           <p class="footer-label">Contato</p>
           <p><a href="mailto:berg@vinciano.org">berg@vinciano.org</a></p>
         </div>
+        <div class="footer-institute">
+          <p class="footer-label">Vínculo institucional</p>
+          <img src="../images/logo-instituto.png" alt="Instituto Vinciano de Artes e Ciências">
+          <p class="institute-motto">Ars et scientia concordant</p>
+          <a href="https://vinciano.org">Instituto Vinciano →</a>
+        </div>
       </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2026 Brazilian Educational Radioastronomy Group · Instituto Vinciano de Artes e Ciências</p>
+      <div class="footer-bottom">
+        <span>© 2026 BERG — Brazilian Educational Radioastronomy Group</span>
+      </div>
     </div>
   </footer>
 
-  <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mainNav = document.querySelector('.main-nav');
-
-    if (menuToggle && mainNav) {
-      menuToggle.addEventListener('click', () => {
-        const open = mainNav.classList.toggle('mobile-open');
-        menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    }
-  </script>
+  <script src="../assets/script.js"></script>
 </body>
 </html>

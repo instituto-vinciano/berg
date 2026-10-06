@@ -1,0 +1,54 @@
+BERG — COMO ALIMENTAR NOTÍCIAS
+
+CONVENÇÃO DE PASTAS
+Use sempre:
+AAAA-MM-identificador
+
+Exemplos:
+2026-10-conedu
+2026-08-intercordel
+2025-12-flibo
+
+Cada notícia/evento tem sua pasta em /noticias/.
+A imagem principal, quando existir, deve preferencialmente chamar-se:
+imagem.jpg
+
+Exemplo:
+/noticias/2026-10-conedu/imagem.jpg
+
+CADASTRO
+O registro fica em:
+/noticias/noticias.js
+
+O identificador do registro deve ser exatamente o nome da pasta:
+"2026-10-conedu": { ... }
+
+O sistema extrai automaticamente do identificador:
+- ano;
+- mês;
+- data curta (OUT 2026);
+- data longa (Outubro 2026);
+- pasta-base da notícia.
+
+Você alimenta principalmente:
+- categoria
+- local
+- titulo
+- resumo
+
+Quando houver matéria completa, crie:
+/noticias/AAAA-MM-identificador/index.html
+e marque temMateria: true (ou informe link explicitamente).
+
+A mesma unidade pode ser exibida na Home, em Notícias e em páginas de projetos,
+cada uma com seu próprio formato visual. Os dados não precisam ser duplicados.
+
+PAGINAÇÃO
+A página Notícias exibe 20 registros por página.
+No desktop: 2 colunas × até 10 linhas.
+No celular: 1 coluna, mantendo a mesma ordem cronológica.
+index.html mostra os 20 registros mais recentes.
+pagina-2.html mostra os registros 21–40; pagina-3.html, 41–60; e assim por diante.
+A navegação usa “← Mais recentes” e “Mais antigas →”.
+Os registros permanecem todos no mesmo noticias.js; não são movidos fisicamente entre páginas.
+

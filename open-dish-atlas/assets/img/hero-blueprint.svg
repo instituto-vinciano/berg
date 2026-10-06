@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-label="Recorte gráfico em estilo blueprint de uma estrutura parabólica">
+<defs><pattern id="g" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" stroke="#4bc8ff" stroke-opacity=".10" stroke-width="1"/></pattern><linearGradient id="fade" x1="0" x2="1"><stop stop-color="#06182b" stop-opacity=".15"/><stop offset="1" stop-color="#0a3152" stop-opacity=".02"/></linearGradient></defs>
+<rect width="1200" height="680" fill="url(#g)"/><rect width="1200" height="680" fill="url(#fade)"/>
+<g fill="none" stroke="#d8efff" stroke-opacity=".76" stroke-width="2.1" vector-effect="non-scaling-stroke">
+<path d="M90 770 Q520 10 1280 52"/>
+<path d="M120 790 Q540 62 1265 92" stroke-opacity=".38"/>
+<path d="M210 695 Q565 130 1180 125" stroke-opacity=".34"/>
+<path d="M310 610 Q590 205 1070 170" stroke-opacity=".24"/>
+<path d="M405 520 Q620 275 960 225" stroke-opacity=".18"/>
+<path d="M520 450 L1170 120" stroke-opacity=".55"/>
+<path d="M640 510 L1140 155" stroke-opacity=".38"/>
+<path d="M760 575 L1110 190" stroke-opacity=".28"/>
+<path d="M890 640 L1080 220" stroke-opacity=".22"/>
+<path d="M340 610 L1130 138" stroke-opacity=".20"/>
+<path d="M470 690 L1165 118" stroke-opacity=".18"/>
+</g>
+<g fill="none" stroke="#39c3ff" stroke-opacity=".22" stroke-width="1">
+<path d="M0 560H1200M0 420H1200M0 280H1200M0 140H1200"/><path d="M200 0V680M400 0V680M600 0V680M800 0V680M1000 0V680"/>
+</g>
+</svg>

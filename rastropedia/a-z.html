@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Índice A–Z da Rastropedia.">
+<title>A–Z — Rastropedia</title>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<header class="app-header" id="inicio">
+  <div class="app-header-inner">
+    <a class="rastro-wordmark" href="index.html" aria-label="Rastropedia — início">RASTROPEDIA</a>
+    <nav class="app-nav" aria-label="Navegação da Rastropedia">
+      <a class="active" href="a-z.html">A–Z</a>
+      <a href="index.html#categorias">CATEGORIAS</a>
+      <a href="sobre.html">SOBRE</a>
+    </nav>
+  </div>
+</header>
+<main class="az-wrap">
+  <h1 class="az-title">Índice A–Z</h1>
+  <p class="az-intro">Todos os verbetes da Rastropedia em ordem alfabética.</p>
+  <nav id="az-letters" class="az-letters" aria-label="Letras do índice"></nav>
+  <div id="az-groups"></div>
+</main>
+<footer>
+  <div class="footer-col footer-logo">
+    <span>Uma iniciativa do</span>
+    <img src="../images/berg-logo.png" alt="BERG — Brazilian Educational Radioastronomy Group">
+  </div>
+  <div class="footer-col footer-description">
+    <p>Rastropedia — Enciclopédia de Radioastronomia do BERG.</p>
+  </div>
+  <div class="footer-col footer-logo">
+    <span>Instituto Vinciano de Artes e Ciências</span>
+    <img src="../images/logo-instituto.png" alt="Instituto Vinciano de Artes e Ciências">
+    <small>Ars et scientia concordant</small>
+  </div>
+</footer>
+<script src="assets/js/verbetes.js"></script>
+<script>
+(function(){
+ const data=(window.RASTROPEDIA_VERBETES||[]).slice().sort((a,b)=>a.titulo.localeCompare(b.titulo,"pt-BR"));
+ const norm=s=>(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toUpperCase();
+ const groups={};
+ data.forEach(v=>{let l=norm(v.titulo).charAt(0);if(!/[A-Z]/.test(l))l="#";(groups[l]||(groups[l]=[])).push(v)});
+ const letters=document.getElementById("az-letters"),root=document.getElementById("az-groups");
+ "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(l=>{if(groups[l]){const a=document.createElement("a");a.href="#letra-"+l;a.textContent=l;letters.appendChild(a)}});
+ Object.keys(groups).sort().forEach(l=>{
+   const s=document.createElement("section");s.className="az-group";s.id="letra-"+l;
+   const links=groups[l].map(v=>'<a href="index.html?verbete='+encodeURIComponent(v.titulo)+'">'+v.titulo+'</a>').join("");
+   s.innerHTML="<strong>"+l+"</strong><div class=\"az-list\">"+links+"</div>";root.appendChild(s);
+ });
+})();
+</script>
+</body></html>

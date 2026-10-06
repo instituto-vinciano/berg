@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Rastropedia — enciclopédia digital de radioastronomia do BERG.">
+<title>Rastropedia</title>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<header class="app-header" id="inicio">
+  <div class="app-header-inner">
+    <a class="rastro-wordmark" href="index.html" aria-label="Rastropedia — início">RASTROPEDIA</a>
+    <nav class="app-nav" aria-label="Navegação da Rastropedia">
+      <a href="sobre.html">SOBRE</a>
+    </nav>
+  </div>
+</header>
+
+<section class="explore section" id="explorar">
+  <label class="search-box">
+    <span aria-hidden="true">⌕</span>
+    <input id="busca" type="search" placeholder="Ex.: pulsar, radiotelescópio, Jansky..." autocomplete="off" aria-label="Buscar na Rastropedia">
+  </label>
+
+  <div class="filters" id="categorias" aria-label="Categorias"></div>
+  <div id="verbetes" class="cards" aria-live="polite"></div>
+  <div id="sem-resultados" class="empty" hidden>Nenhum verbete encontrado.</div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-col footer-logo">
+    <span>Uma iniciativa do</span>
+    <img src="../images/berg-logo.png" alt="BERG — Brazilian Educational Radioastronomy Group">
+  </div>
+  <div class="footer-col footer-description">
+    <p>Rastropedia — Enciclopédia de Radioastronomia do BERG.</p>
+  </div>
+  <div class="footer-col footer-logo">
+    <span>Instituto Vinciano de Artes e Ciências</span>
+    <img src="../images/logo-instituto.png" alt="Instituto Vinciano de Artes e Ciências">
+    <small>Ars et scientia concordant</small>
+  </div>
+</footer>
+
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <article class="panel">
+    <button id="fechar" class="close" aria-label="Fechar">×</button>
+    <small id="modal-cat"></small>
+    <h2 id="modal-title"></h2>
+    <div id="modal-image"></div>
+    <p id="modal-text"></p>
+    <div id="modal-related" class="related"></div>
+  </article>
+</div>
+
+<script src="assets/js/verbetes.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

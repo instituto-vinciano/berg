@@ -1,709 +1,1269 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-berg-root="">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Conheça o BERG — Brazilian Educational Radioastronomy Group, iniciativa do Instituto Vinciano de Artes e Ciências.">
+  <meta name="description" content="Sobre o BERG — Brazilian Educational Radioastronomy Group, iniciativa dedicada à educação, divulgação e experimentação em radioastronomia.">
   <title>Sobre — BERG</title>
+
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
 
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
-
-    :root {
-      --blue: #2450b8;
-      --deep: #15357f;
-      --ink: #111827;
-      --muted: #5d6675;
-      --white: #ffffff;
-      --soft: #f4f6fa;
-      --line: #dde2ea;
-      --header-blue: #31509F;
+    :root{
+      --blue:#31509F;
+      --blue-2:#2450b8;
+      --deep:#0c2d69;
+      --ink:#111827;
+      --muted:#5d6675;
+      --soft:#f4f7fb;
+      --line:#dde4ee;
+      --white:#fff;
+      --warm:#f7f2e8;
     }
 
-    * {
-      box-sizing: border-box;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:#fff;
+      font-family:"DM Sans",Arial,sans-serif;
+      line-height:1.55;
+    }
+    img{max-width:100%}
+    a{color:inherit}
+    .container{width:min(1180px,88vw);margin:0 auto}
+
+    /* CABEÇALHO */
+    .site-header{
+      min-height:96px;
+      padding:0 6vw;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+      background:var(--blue);
+      border-bottom:1px solid rgba(255,255,255,.2);
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+    .brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
+    .site-logo{display:block;width:170px;height:auto}
+    .header-right{display:flex;align-items:center;gap:20px}
+    .main-nav{display:flex;align-items:center;gap:24px}
+    .main-nav a{
+      color:#fff;text-decoration:none;text-transform:uppercase;
+      font-size:12px;font-weight:700;letter-spacing:.045em;white-space:nowrap;
+    }
+    .main-nav a:hover,.main-nav .active{color:#d9e2ff}
+    .lang-switch{
+      display:flex;gap:8px;align-items:center;padding-left:15px;
+      border-left:1px solid rgba(255,255,255,.28);
+      color:#fff;font-size:12px;font-weight:800;
+    }
+    .lang-switch a{text-decoration:none;color:#fff}
+    .lang-switch span{opacity:.45}
+    .menu-toggle{
+      display:none;color:#fff;background:none;border:0;
+      font-size:26px;cursor:pointer;
     }
 
-    html {
-      scroll-behavior: smooth;
+    /* RÓTULOS E LINKS */
+    .eyebrow,.meta{
+      margin:0 0 8px;color:var(--blue-2);font-size:11px;font-weight:800;
+      letter-spacing:.11em;text-transform:uppercase;
+    }
+    .section-title{
+      margin:0;font-size:22px;line-height:1.2;color:var(--deep);
+    }
+    .section-top{
+      display:flex;justify-content:space-between;align-items:end;
+      gap:20px;margin-bottom:18px;
+    }
+    .arrow-link,.text-link{
+      color:var(--blue-2);font-size:13px;font-weight:800;text-decoration:none;
+    }
+    .arrow-link:hover,.text-link:hover{text-decoration:underline}
+    .button{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:12px 18px;background:var(--blue-2);color:#fff;
+      text-decoration:none;font-size:13px;font-weight:800;border:1px solid var(--blue-2);
     }
 
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: #ffffff;
-      font-family: "DM Sans", Arial, sans-serif;
-      line-height: 1.6;
+    /* TOPO EDITORIAL: MANCHETE + DESTAQUES */
+    .editorial-top{padding:42px 0 34px}
+    .editorial-grid{
+      display:grid;
+      grid-template-columns:minmax(0,2.15fr) minmax(290px,.85fr);
+      gap:28px;
+      align-items:start;
+    }
+    .lead-story{
+      display:grid;
+      grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);
+      border:1px solid var(--line);
+      background:#fff;
+      min-height:420px;
+    }
+    .lead-media{
+      min-height:420px;background:#e8edf5;overflow:hidden;
+    }
+    .lead-media img{width:100%;height:100%;display:block;object-fit:cover}
+    .lead-copy{
+      padding:34px 30px;display:flex;flex-direction:column;justify-content:center;
+    }
+    .lead-copy h1{
+      margin:0 0 14px;font-size:clamp(28px,3vw,39px);
+      line-height:1.12;letter-spacing:-.025em;
+    }
+    .lead-copy p{
+      margin:0 0 20px;color:var(--muted);font-size:15px;line-height:1.7;
+    }
+    .highlights h2{margin-bottom:16px}
+    .highlight-list{display:grid;gap:10px}
+    .highlight-card{
+      display:grid;grid-template-columns:92px 1fr;gap:14px;
+      min-height:102px;padding:10px;background:var(--soft);
+      text-decoration:none;border:1px solid transparent;
+    }
+    .highlight-card:hover{border-color:#cbd6e8}
+    .highlight-card img{
+      width:92px;height:82px;object-fit:cover;background:#e7ebf2;
+    }
+    .highlight-card h3{
+      margin:2px 0 4px;color:var(--deep);font-size:16px;line-height:1.25;
+    }
+    .highlight-card p{
+      margin:0;color:var(--muted);font-size:12px;line-height:1.45;
     }
 
-    .site-header {
-      height: 96px;
-      padding: 0 6vw;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--header-blue);
-      border-bottom: 1px solid rgba(255,255,255,.20);
-      position: sticky;
-      top: 0;
-      z-index: 20;
+    /* ÚLTIMAS + AGENDA */
+    .latest{padding:22px 0 42px;border-bottom:1px solid var(--line)}
+    .latest-grid{
+      display:grid;grid-template-columns:minmax(0,3fr) minmax(250px,1fr);
+      gap:28px;align-items:start;
+    }
+    .news-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .news-card{text-decoration:none;display:block}
+    .news-card-media{
+      aspect-ratio:4/3;background:#edf0f5;overflow:hidden;margin-bottom:10px;
+    }
+    .news-card-media img{width:100%;height:100%;object-fit:cover;display:block}
+    .news-card h3{
+      margin:0;color:var(--deep);font-size:15px;line-height:1.35;
+    }
+    .news-card .meta{font-size:9px;margin-bottom:5px}
+    .agenda{
+      background:var(--soft);padding:18px;
+    }
+    .agenda-list{display:grid;gap:10px}
+    .agenda-item{
+      display:grid;grid-template-columns:55px 1fr;gap:12px;
+      padding:13px;background:#fff;text-decoration:none;
+    }
+    .agenda-date{
+      color:var(--blue-2);font-weight:800;text-align:center;line-height:1;
+      border-right:1px solid var(--line);padding-right:10px;
+    }
+    .agenda-date strong{display:block;font-size:23px}
+    .agenda-date span{font-size:11px}
+    .agenda-item h3{margin:0 0 4px;font-size:14px;line-height:1.3;color:var(--deep)}
+    .agenda-item p{margin:0;color:var(--muted);font-size:11px}
+
+    /* RADIOASTRONOMIA EM AÇÃO */
+    .action-section{
+      position:relative;padding:50px 0 54px;color:#fff;
+      background:
+        linear-gradient(90deg,rgba(5,29,68,.97),rgba(5,29,68,.88)),
+        url("images/hero.png") center 72%/cover no-repeat;
+    }
+    .action-section .section-top{align-items:center}
+    .action-section .section-title{color:#fff;font-size:34px}
+    .action-section .eyebrow{color:#f1c66d}
+    .action-intro{
+      max-width:650px;margin:6px 0 24px;color:rgba(255,255,255,.88);
+      font-size:15px;
+    }
+    .action-section .arrow-link{color:#fff;border:1px solid rgba(255,255,255,.7);padding:10px 14px}
+    .action-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .action-card{background:#fff;color:var(--ink);text-decoration:none}
+    .action-card-media{aspect-ratio:16/9;overflow:hidden;background:#dce3ee}
+    .action-card-media img{width:100%;height:100%;object-fit:cover;display:block}
+    .action-card-body{padding:14px}
+    .action-card .meta{font-size:9px}
+    .action-card h3{margin:0 0 6px;color:var(--deep);font-size:16px;line-height:1.25}
+    .action-card p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}
+
+    /* SOBRE + CADASTRO */
+    .about-signup{padding:42px 0;background:#fff}
+    .about-signup-grid{
+      display:grid;grid-template-columns:minmax(0,2fr) minmax(300px,1fr);
+      gap:26px;
+    }
+    .about-panel{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:25px;
+      padding:28px;background:#f5f8fc;border:1px solid #e2e8f2;
+    }
+    .about-panel h2{margin:0 0 10px;color:var(--deep);font-size:22px}
+    .about-panel p{margin:0 0 18px;color:var(--muted);font-size:14px;line-height:1.7}
+    .about-image{min-height:180px;background:#e7ebf2;overflow:hidden}
+    .about-image img{width:100%;height:100%;object-fit:cover;display:block}
+    .signup-panel{
+      padding:28px;background:var(--warm);border:1px solid #ece2d0;
+    }
+    .signup-panel h2{margin:0 0 8px;color:var(--deep);font-size:22px}
+    .signup-panel p{margin:0 0 18px;color:var(--muted);font-size:13px;line-height:1.6}
+    .signup-form{display:grid;grid-template-columns:1fr auto;gap:8px}
+    .signup-form input{
+      min-width:0;padding:12px;border:1px solid #cfd6e0;background:#fff;font:inherit;
+    }
+    .signup-form button{
+      border:0;padding:12px 15px;background:var(--blue-2);color:#fff;
+      font:inherit;font-size:12px;font-weight:800;cursor:pointer;
+    }
+    .signup-note{margin-top:10px!important;font-size:10px!important}
+
+    /* RODAPÉ */
+    .site-footer{padding:44px 0 18px;color:rgba(255,255,255,.88);background:#082d62}
+    .footer-grid{
+      display:grid;grid-template-columns:1.1fr 1.3fr .8fr 1fr;
+      gap:38px;align-items:start;
+    }
+    .footer-brand img{display:block;width:165px}
+    .footer-label{
+      margin:0 0 10px;color:rgba(255,255,255,.65);font-size:10px;
+      font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+    }
+    .footer-nav{display:grid;grid-template-columns:1fr 1fr;gap:5px 22px}
+    .footer-nav a,.footer-column a{
+      color:#fff;text-decoration:none;font-size:12px;line-height:1.6;
+    }
+    .footer-column p{margin:0;color:rgba(255,255,255,.78);font-size:12px;line-height:1.6}
+    .footer-bottom{
+      margin-top:34px;padding-top:16px;border-top:1px solid rgba(255,255,255,.22);
+      display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+      color:rgba(255,255,255,.65);font-size:10px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
+    /* RESPONSIVO */
+    @media(max-width:1050px){
+      .main-nav{gap:15px}
+      .main-nav a{font-size:11px}
+      .lead-story{grid-template-columns:1fr}
+      .lead-media{min-height:340px}
+      .news-cards{grid-template-columns:repeat(2,1fr)}
+      .action-grid{grid-template-columns:repeat(2,1fr)}
     }
-
-    .site-logo {
-      display: block;
-      width: 170px;
-      height: auto;
-    }
-
-    .main-nav {
-      display: flex;
-      gap: 34px;
-    }
-
-    .main-nav a {
-      color: #ffffff;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-    }
-
-    .main-nav a:hover,
-    .main-nav .active {
-      color: #d9e2ff;
-    }
-
-    .menu-toggle {
-      display: none;
-      color: #ffffff;
-      background: none;
-      border: 0;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    .about-hero {
-      padding: 42px 8vw 38px;
-      background: var(--deep);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .about-hero > div {
-      max-width: 860px;
-    }
-
-    .eyebrow {
-      margin: 0 0 10px;
-      color: #dbe6ff;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
-    .blue-eyebrow {
-      color: var(--blue);
-    }
-
-    .about-hero h1 {
-      margin: 0;
-      color: #ffffff;
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 36px;
-      line-height: 1.25;
-    }
-
-    .about-hero p {
-      max-width: 760px;
-      margin: 14px 0 0;
-      color: rgba(255,255,255,.80);
-      font-size: 17px;
-      line-height: 1.7;
-    }
-
-    .section {
-      padding: 68px 8vw;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 54px;
-      align-items: start;
-    }
-
-    .section h2 {
-      margin: 0 0 16px;
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 34px;
-      line-height: 1.3;
-    }
-
-    .section p {
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.75;
-    }
-
-    .institutional-panel {
-      padding: 34px;
-      background: var(--soft);
-      border: 1px solid var(--line);
-    }
-
-    .institutional-panel h3 {
-      margin: 0 0 12px;
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 24px;
-      line-height: 1.35;
-    }
-
-    .institutional-panel p {
-      margin: 0 0 16px;
-      font-size: 15px;
-    }
-
-    .text-link {
-      color: var(--deep);
-      font-size: 14px;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    .text-link:hover {
-      text-decoration: underline;
-    }
-
-    .mvv {
-      background: var(--soft);
-    }
-
-    .mvv-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
-      margin-top: 30px;
-    }
-
-    .mvv-card {
-      padding: 30px;
-      background: #ffffff;
-      border: 1px solid var(--line);
-    }
-
-    .mvv-card h3 {
-      margin: 0 0 12px;
-      color: var(--deep);
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 23px;
-    }
-
-    .mvv-card p {
-      margin: 0;
-      font-size: 15px;
-    }
-
-    .practice-grid {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 54px;
-      align-items: start;
-    }
-
-    .practice-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px 26px;
-      margin-top: 8px;
-    }
-
-    .practice-item {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--ink);
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .languages {
-      background: var(--soft);
-    }
-
-    .language-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .language-tag {
-      padding: 10px 14px;
-      background: #ffffff;
-      border: 1px solid var(--line);
-      color: var(--deep);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .motto-band {
-      padding: 54px 8vw;
-      text-align: center;
-      background: var(--header-blue);
-      color: #ffffff;
-    }
-
-    .motto-band p {
-      margin: 0 0 8px;
-      color: rgba(255,255,255,.72);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
-    .motto-band h2 {
-      margin: 0;
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.3;
-    }
-
-    .site-footer {
-      padding: 58px 8vw 20px;
-      color: rgba(255,255,255,.88);
-      background: var(--header-blue);
-    }
-
-    .footer-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: .75fr 1.25fr 1.15fr 1.05fr;
-      gap: 48px;
-      align-items: start;
-    }
-
-    .footer-brand img {
-      display: block;
-      width: 150px;
-      height: auto;
-    }
-
-    .footer-label {
-      margin: 0 0 10px;
-      color: rgba(255,255,255,.78);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    .footer-column h3 {
-      margin: 0 0 12px;
-      color: #ffffff;
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 21px;
-      line-height: 1.35;
-    }
-
-    .footer-column p {
-      margin: 0 0 14px;
-      color: rgba(255,255,255,.82);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .footer-link {
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .footer-link:hover {
-      text-decoration: underline;
-    }
-
-    .footer-motto {
-      margin-bottom: 16px;
-      color: #ffffff;
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 20px;
-      font-style: italic;
-      line-height: 1.4;
-    }
-
-    .footer-contact {
-      margin-top: 20px;
-    }
-
-    .footer-contact a {
-      color: rgba(255,255,255,.92);
-      text-decoration: none;
-    }
-
-    .footer-bottom {
-      max-width: 1120px;
-      margin: 42px auto 0;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,.20);
-    }
-
-    .footer-bottom p {
-      margin: 0;
-      text-align: center;
-      color: rgba(255,255,255,.72);
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 12px;
-      font-style: italic;
-    }
-
-    @media (max-width: 900px) {
-      .main-nav {
-        display: none;
+    @media(max-width:900px){
+      .site-header{min-height:84px;padding:0 5vw}
+      .site-logo{width:155px}
+      .main-nav,.lang-switch{display:none}
+      .menu-toggle{display:block}
+      .main-nav.mobile-open{
+        display:flex;position:absolute;top:84px;left:0;right:0;
+        flex-direction:column;align-items:stretch;gap:0;padding:10px 6vw 16px;
+        background:var(--blue);box-shadow:0 12px 24px rgba(0,0,0,.18);
       }
-
-      .main-nav.mobile-open {
-        display: flex;
-        position: absolute;
-        top: 96px;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        gap: 0;
-        padding: 12px 6vw 18px;
-        background: var(--header-blue);
-        border-top: 1px solid rgba(255,255,255,.16);
-        box-shadow: 0 12px 24px rgba(0,0,0,.16);
-      }
-
-      .main-nav.mobile-open a {
-        padding: 12px 0;
-        border-bottom: 1px solid rgba(255,255,255,.12);
-      }
-
-      .main-nav.mobile-open a:last-child {
-        border-bottom: 0;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .site-header {
-        padding: 0 5vw;
-      }
-
-      .site-logo {
-        width: 160px;
-      }
-
-      .intro-grid,
-      .practice-grid,
-      .mvv-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .practice-list {
-        grid-template-columns: 1fr;
-      }
-
-      .section {
-        padding-left: 7vw;
-        padding-right: 7vw;
-      }
-
-      .footer-inner {
-        grid-template-columns: 1fr 1fr;
-        gap: 36px;
-      }
-
-      .footer-brand img {
-        width: 140px;
-      }
+      .main-nav.mobile-open a{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+      .editorial-grid,.latest-grid,.about-signup-grid{grid-template-columns:1fr}
+      .highlight-list{grid-template-columns:repeat(3,1fr)}
+      .highlight-card{grid-template-columns:1fr}
+      .highlight-card img{width:100%;height:auto;aspect-ratio:16/9}
+      .about-panel{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
     }
-
-    @media (max-width: 620px) {
-      .footer-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .site-footer {
-        padding-left: 7vw;
-        padding-right: 7vw;
-      }
+    @media(max-width:620px){
+      .container{width:min(90vw,1180px)}
+      .editorial-top{padding-top:24px}
+      .lead-media{min-height:240px}
+      .lead-copy{padding:24px 20px}
+      .lead-copy h1{font-size:29px}
+      .highlights .section-top{margin-top:4px}
+      .highlight-list{grid-template-columns:1fr}
+      .highlight-card{grid-template-columns:100px 1fr}
+      .highlight-card img{width:100px;height:86px}
+      .news-cards{grid-template-columns:1fr 1fr}
+      .action-grid{grid-template-columns:1fr}
+      .action-section .section-title{font-size:29px}
+      .action-section .section-top{align-items:flex-start;flex-direction:column}
+      .about-panel,.signup-panel{padding:22px}
+      .signup-form{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-bottom{flex-direction:column}
     }
+  .news-pagination{display:flex;justify-content:space-between;gap:20px;margin-top:38px}.news-pagination a{text-decoration:none;font-weight:700}
 
-  </style>
+/* Grade de Notícias: 20 por página, 2 colunas no desktop e fluxo único no celular. */
+.news-list,
+.news-grid,
+#lista-noticias {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 760px) {
+  .news-list,
+  .news-grid,
+  #lista-noticias {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+
+<style id="mockup-fidelity-v2">
+  :root{
+    --blue:#064fba;
+    --deep:#063d91;
+    --ink:#071b42;
+    --muted:#536681;
+    --soft:#f2f6fb;
+    --line:#d9e3ef;
+  }
+  body{
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--ink);
+    font-size:14px;
+  }
+  .container{width:min(1240px,94vw)}
+  .site-header{
+    min-height:80px;
+    padding:0 max(3vw,28px);
+    background:linear-gradient(90deg,#073e96,#0759c7);
+  }
+  .site-logo{width:180px}
+  .header-right{gap:18px}
+  .main-nav{gap:26px}
+  .main-nav a{font-size:10px;letter-spacing:.02em;font-weight:600}
+  .lang-switch{font-size:11px}
+
+  .editorial-top{padding:20px 0 16px}
+  .editorial-grid{
+    grid-template-columns:minmax(0,3.2fr) minmax(280px,1.25fr);
+    gap:20px;
+  }
+  .lead-story{
+    grid-template-columns:minmax(0,1.72fr) minmax(300px,.98fr);
+    min-height:334px;
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .lead-media{min-height:334px}
+  .lead-copy{padding:25px 24px}
+  .lead-copy h1{
+    font-size:29px;
+    line-height:1.16;
+    letter-spacing:-.035em;
+    color:var(--deep);
+    margin-bottom:12px;
+  }
+  .lead-copy p{font-size:13px;line-height:1.48;margin-bottom:15px}
+  .button{padding:10px 15px;font-size:12px;border-radius:3px}
+  .meta,.eyebrow{font-size:9px;letter-spacing:.08em}
+  .section-title{font-size:18px;color:#064eb5}
+  .section-top{margin-bottom:10px}
+
+  .highlight-list{gap:8px}
+  .highlight-card{
+    grid-template-columns:96px 1fr;
+    min-height:92px;
+    gap:12px;
+    padding:0;
+    background:#f0f5fb;
+  }
+  .highlight-card img{width:96px;height:92px}
+  .highlight-card > div{padding:11px 10px 8px 0}
+  .highlight-card h3{font-size:14px;margin:0 0 3px}
+  .highlight-card p{font-size:10px;line-height:1.35}
+  .arrow-link,.text-link{font-size:10px}
+
+  .latest{padding:8px 0 22px}
+  .latest-grid{
+    grid-template-columns:minmax(0,3.4fr) minmax(250px,1.15fr);
+    gap:20px;
+  }
+  .news-cards{gap:10px}
+  .news-card-media{aspect-ratio:1.75/1;margin-bottom:7px;border-radius:2px}
+  .news-card h3{font-size:12px;line-height:1.34}
+  .news-card .meta{font-size:8px}
+  .agenda{padding:12px;background:#f0f5fb}
+  .agenda-item{grid-template-columns:48px 1fr;padding:10px;gap:9px}
+  .agenda-date strong{font-size:19px}
+  .agenda-item h3{font-size:12px}
+  .agenda-item p{font-size:10px}
+
+  .action-section{
+    padding:30px 0 34px;
+    background:
+      linear-gradient(90deg,rgba(2,38,85,.94),rgba(2,38,85,.67)),
+      url("images/hero.png") center 68%/cover no-repeat;
+  }
+  .action-section .section-title{font-size:31px}
+  .action-intro{font-size:13px;line-height:1.5;margin-bottom:16px}
+  .action-grid{gap:10px}
+  .action-card-media{aspect-ratio:1.85/1}
+  .action-card-body{padding:11px 13px}
+  .action-card h3{font-size:15px}
+  .action-card p{font-size:11px;line-height:1.35}
+
+  .about-signup{padding:28px 0}
+  .about-signup-grid{gap:18px;grid-template-columns:minmax(0,2.1fr) minmax(280px,.9fr)}
+  .about-panel,.signup-panel{padding:22px}
+  .about-panel{grid-template-columns:1.3fr .7fr}
+  .about-panel h2,.signup-panel h2{font-size:19px}
+  .about-panel p,.signup-panel p{font-size:12px;line-height:1.55}
+  .about-image{min-height:145px}
+
+  .site-footer{padding:30px 0 14px}
+  .footer-grid{gap:28px}
+  .footer-brand img{width:155px}
+  .footer-nav a,.footer-column a,.footer-column p{font-size:11px}
+  .footer-bottom{margin-top:24px;padding-top:12px;font-size:9px}
+
+  /* Graceful image placeholders: no broken-image text if a future asset is absent. */
+  img[data-fallback]{background:#e8eef7}
+  @media(max-width:1050px){
+    .lead-story{grid-template-columns:1.45fr 1fr}
+    .lead-copy h1{font-size:25px}
+    .main-nav{gap:15px}
+  }
+  @media(max-width:900px){
+    .container{width:min(92vw,1240px)}
+    .editorial-grid,.latest-grid,.about-signup-grid{grid-template-columns:1fr}
+    .lead-story{grid-template-columns:1.35fr 1fr}
+    .highlight-list{grid-template-columns:repeat(3,1fr)}
+  }
+  @media(max-width:620px){
+    .site-header{min-height:72px}
+    .site-logo{width:145px}
+    .editorial-top{padding-top:14px}
+    .lead-story{grid-template-columns:1fr}
+    .lead-media{min-height:220px}
+    .lead-copy{padding:20px}
+    .lead-copy h1{font-size:25px}
+    .highlight-list{grid-template-columns:1fr}
+    .news-cards{grid-template-columns:1fr 1fr}
+    .action-section .section-title{font-size:27px}
+    .about-panel{grid-template-columns:1fr}
+  }
+</style>
+
+
+<style id="berg-approved-layout-v4">
+:root{
+  --blue:#0756c5;
+  --deep:#063d91;
+  --ink:#062b72;
+  --muted:#526986;
+  --soft:#eef4fb;
+  --line:#d8e4f1;
+}
+
+/* ---------- HEADER ---------- */
+.site-header{
+  min-height:80px;
+  padding:0 max(2.5vw,26px);
+  background:
+    linear-gradient(90deg,rgba(3,49,112,.94),rgba(5,82,180,.90)),
+    url("images/hero.png") center 45%/cover no-repeat;
+}
+.site-logo{width:178px}
+.header-right{gap:18px}
+.main-nav{gap:25px}
+.main-nav a{font-size:10px}
+.search-icon{display:inline-flex}
+
+/* ---------- TOP EDITORIAL ---------- */
+.editorial-top{padding:20px 0 14px}
+.container{width:min(1240px,96vw)}
+
+.editorial-grid{
+  display:grid;
+  grid-template-columns:minmax(0,3.18fr) minmax(280px,1.18fr);
+  gap:20px;
+  align-items:start;
+}
+
+.lead-story{
+  display:grid;
+  grid-template-columns:minmax(0,1.72fr) minmax(0,.98fr);
+  min-height:334px;
+  height:334px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  overflow:hidden;
+  background:#fff;
+}
+
+.lead-media{
+  position:relative;
+  min-width:0;
+  min-height:0;
+  overflow:hidden;
+  background:#e8eef7;
+}
+.lead-media img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+.lead-media::after{
+  content:attr(data-category);
+  position:absolute;
+  left:12px;
+  top:0;
+  padding:8px 11px;
+  background:#0756c5;
+  color:#fff;
+  font-size:9px;
+  line-height:1;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.lead-copy{
+  position:relative;
+  min-width:0;
+  padding:23px 22px 35px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  overflow:hidden;
+}
+.lead-copy .meta{
+  margin:0 0 10px;
+  font-size:9px;
+  line-height:1.3;
+  letter-spacing:.08em;
+}
+.lead-copy h1{
+  margin:0 0 10px;
+  font-size:clamp(22px,1.9vw,27px);
+  line-height:1.12;
+  letter-spacing:-.03em;
+  color:var(--deep);
+  overflow-wrap:break-word;
+}
+.lead-copy > p:not(.meta){
+  margin:0 0 12px;
+  font-size:11.5px;
+  line-height:1.43;
+}
+.lead-copy .button{
+  padding:9px 14px;
+  font-size:11px;
+}
+.lead-copy::after{
+  content:"●  ●  ●";
+  position:absolute;
+  left:22px;
+  bottom:10px;
+  color:#cfd9e8;
+  font-size:9px;
+  letter-spacing:4px;
+}
+.lead-copy::before{
+  content:"";
+  position:absolute;
+  left:22px;
+  bottom:13px;
+  width:20px;
+  height:4px;
+  border-radius:4px;
+  background:#0756c5;
+  z-index:2;
+}
+
+/* ---------- DESTAQUES ---------- */
+.highlights{min-width:0}
+.highlights .section-top{
+  margin-bottom:9px;
+  min-height:27px;
+  align-items:center;
+}
+.section-title{
+  font-size:17px;
+  color:#0756c5;
+}
+.highlight-list{display:grid;gap:8px}
+.highlight-card{
+  display:grid;
+  grid-template-columns:96px minmax(0,1fr);
+  min-height:92px;
+  height:92px;
+  gap:0;
+  background:#eef4fb;
+  overflow:hidden;
+  position:relative;
+}
+.highlight-card img{
+  width:96px;
+  height:92px;
+  object-fit:cover;
+  display:block;
+}
+.highlight-card > div{
+  min-width:0;
+  padding:10px 28px 8px 12px;
+  overflow:hidden;
+}
+.highlight-card .meta{
+  font-size:8px;
+  line-height:1.15;
+  margin:0 0 3px;
+}
+.highlight-card h3{
+  font-size:14px;
+  line-height:1.16;
+  margin:0 0 3px;
+}
+.highlight-card p{
+  font-size:9.5px;
+  line-height:1.3;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+}
+.highlight-card::after{
+  content:"→";
+  position:absolute;
+  right:9px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#0756c5;
+  font-size:17px;
+}
+
+/* ---------- ÚLTIMAS + AGENDA ---------- */
+.latest{padding:7px 0 18px}
+.latest-grid{
+  display:grid;
+  grid-template-columns:minmax(0,3.18fr) minmax(280px,1.18fr);
+  gap:20px;
+  align-items:start;
+}
+.news-cards{gap:10px}
+.news-card-media{
+  aspect-ratio:1.82/1;
+  margin-bottom:7px;
+  border-radius:2px;
+}
+.news-card .meta{font-size:8px}
+.news-card h3{
+  font-size:11.5px;
+  line-height:1.32;
+}
+.agenda{
+  padding:11px;
+  background:#eef4fb;
+}
+.agenda-item{
+  grid-template-columns:48px minmax(0,1fr);
+  padding:9px;
+  gap:9px;
+}
+.agenda-date strong{font-size:19px}
+.agenda-item h3{font-size:11.5px}
+.agenda-item p{font-size:9.5px}
+
+/* ---------- RADIOASTRONOMIA EM AÇÃO ---------- */
+.action-section{
+  padding:28px 0 31px;
+  background:
+    linear-gradient(90deg,rgba(1,31,73,.93),rgba(1,31,73,.55)),
+    url("images/hero.png") center 66%/cover no-repeat;
+}
+.action-section .section-top{align-items:flex-start}
+.action-section .section-title{
+  font-size:30px;
+  line-height:1.08;
+}
+.action-intro{
+  max-width:610px;
+  font-size:12.5px;
+  line-height:1.48;
+  margin-bottom:15px;
+}
+.action-grid{gap:10px}
+.action-card-media{aspect-ratio:1.85/1}
+.action-card-body{padding:10px 12px}
+.action-card .meta{font-size:8px}
+.action-card h3{font-size:14px;line-height:1.15}
+.action-card p{font-size:10.5px;line-height:1.35}
+
+/* ---------- SOBRE + CADASTRO ---------- */
+.about-signup{
+  padding:18px 0;
+  background:#f6f9fd;
+}
+.about-signup-grid{
+  grid-template-columns:minmax(0,2.08fr) minmax(300px,.92fr);
+  gap:14px;
+}
+.about-panel{
+  grid-template-columns:1.18fr .82fr;
+  gap:20px;
+  padding:18px;
+  min-height:185px;
+  background:linear-gradient(110deg,#fff,#edf5ff);
+}
+.about-panel h2,.signup-panel h2{
+  font-size:18px;
+  color:#0756c5;
+}
+.about-panel p,.signup-panel p{
+  font-size:11px;
+  line-height:1.48;
+}
+.about-image{
+  min-height:115px;
+  align-self:start;
+}
+.about-image img{
+  width:100%;
+  height:115px;
+  object-fit:cover;
+}
+.signup-panel{
+  padding:18px;
+  min-height:185px;
+  background:linear-gradient(110deg,#fff9ef,#fff);
+}
+.signup-form input,.signup-form button{
+  min-height:38px;
+  font-size:10px;
+}
+
+/* ---------- FOOTER ---------- */
+.site-footer{padding:25px 0 12px}
+.footer-grid{gap:25px}
+.footer-brand img{width:150px}
+.footer-nav a,.footer-column a,.footer-column p{font-size:10px}
+.footer-bottom{
+  margin-top:20px;
+  padding-top:11px;
+  font-size:8.5px;
+}
+
+/* ---------- ROBUSTEZ ---------- */
+.editorial-grid,.latest-grid,.lead-story,.lead-media,.lead-copy,
+.highlights,.highlight-card,.highlight-card>div,.news-card,.action-card{
+  min-width:0;
+}
+img{max-width:100%}
+
+/* ---------- TABLET ---------- */
+@media(max-width:1050px){
+  .main-nav{gap:15px}
+  .editorial-grid,.latest-grid{
+    grid-template-columns:minmax(0,2.65fr) minmax(260px,1fr);
+  }
+  .lead-story{
+    grid-template-columns:minmax(0,1.48fr) minmax(0,1fr);
+  }
+  .lead-copy h1{font-size:22px}
+}
+
+/* ---------- TABLET ESTREITO ---------- */
+@media(max-width:900px){
+  .container{width:min(92vw,1240px)}
+  .editorial-grid,.latest-grid,.about-signup-grid{grid-template-columns:1fr}
+  .lead-story{
+    height:auto;
+    min-height:330px;
+    grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  }
+  .lead-media{min-height:330px}
+  .highlight-list{grid-template-columns:repeat(3,1fr)}
+  .highlight-card{
+    height:auto;
+    grid-template-columns:1fr;
+  }
+  .highlight-card img{
+    width:100%;
+    height:auto;
+    aspect-ratio:16/9;
+  }
+  .highlight-card>div{padding:10px 25px 10px 10px}
+}
+
+/* ---------- CELULAR ---------- */
+@media(max-width:620px){
+  .site-header{min-height:72px}
+  .site-logo{width:145px}
+  .editorial-top{padding-top:14px}
+  .lead-story{
+    grid-template-columns:1fr;
+    height:auto;
+  }
+  .lead-media{
+    min-height:0;
+    aspect-ratio:3/2;
+  }
+  .lead-copy{padding:20px 20px 32px}
+  .lead-copy h1{font-size:24px}
+  .lead-copy>p:not(.meta){font-size:12.5px}
+  .highlight-list{grid-template-columns:1fr}
+  .highlight-card{
+    grid-template-columns:100px minmax(0,1fr);
+    height:92px;
+  }
+  .highlight-card img{
+    width:100px;
+    height:92px;
+    aspect-ratio:auto;
+  }
+  .news-cards{grid-template-columns:1fr 1fr}
+  .action-section .section-title{font-size:27px}
+  .about-panel{grid-template-columns:1fr}
+  .about-image img{height:auto;aspect-ratio:8/5}
+}
+</style>
+
+
+<style id="berg-highlights-tuning-v5">
+/* Ajuste localizado: somente a área "Em destaque". */
+.highlight-card{
+  grid-template-columns:104px minmax(0,1fr);
+  min-height:96px;
+  height:96px;
+}
+.highlight-card img{
+  width:104px;
+  height:96px;
+}
+.highlight-card > div{
+  padding:10px 30px 9px 13px;
+}
+.highlight-card .meta{
+  font-size:9px;
+  line-height:1.15;
+  margin-bottom:4px;
+  letter-spacing:.075em;
+}
+.highlight-card h3{
+  font-size:15.5px;
+  line-height:1.14;
+  margin-bottom:4px;
+}
+.highlight-card p{
+  font-size:10.5px;
+  line-height:1.3;
+  -webkit-line-clamp:2;
+}
+.highlight-card::after{
+  right:9px;
+  font-size:18px;
+}
+
+@media(max-width:900px){
+  .highlight-card{
+    height:auto;
+    min-height:0;
+    grid-template-columns:1fr;
+  }
+  .highlight-card img{
+    width:100%;
+    height:auto;
+    aspect-ratio:16/9;
+  }
+}
+
+@media(max-width:620px){
+  .highlight-card{
+    grid-template-columns:104px minmax(0,1fr);
+    height:96px;
+  }
+  .highlight-card img{
+    width:104px;
+    height:96px;
+    aspect-ratio:auto;
+  }
+}
+</style>
+
+
+<style id="berg-header-tuning-v6">
+/* Ajuste final localizado: menu do cabeçalho e seletor de idioma. */
+.main-nav{
+  gap:24px;
+}
+.main-nav a{
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:.015em;
+  line-height:1;
+}
+
+.lang{
+  gap:0;
+  margin-left:4px;
+  padding-left:15px;
+  border-left:1px solid rgba(255,255,255,.35);
+}
+.lang a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:31px;
+  height:28px;
+  padding:0 8px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.04em;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.38);
+}
+.lang a + a{
+  margin-left:5px;
+}
+.lang a:hover,
+.lang a:focus-visible{
+  background:rgba(255,255,255,.14);
+  border-color:rgba(255,255,255,.72);
+}
+
+@media(max-width:1050px){
+  .main-nav{gap:15px}
+  .main-nav a{font-size:10.5px}
+  .lang{padding-left:10px}
+  .lang a{
+    min-width:29px;
+    height:27px;
+    padding:0 7px;
+    font-size:10.5px;
+  }
+}
+
+@media(max-width:900px){
+  /* Não interfere no comportamento responsivo já existente. */
+  .main-nav a{font-size:11px}
+}
+</style>
+
+
+<style id="berg-type-tuning-v7">
+/* Ajuste tipográfico localizado: menu + Últimas notícias. */
+
+/* Menu: incremento discreto sobre a versão anterior. */
+.main-nav a{
+  font-size:12px;
+}
+
+/* Últimas notícias: melhora leitura sem alterar cards ou geometria. */
+.news-card .meta{
+  font-size:9px;
+  line-height:1.2;
+}
+.news-card h3{
+  font-size:12.5px;
+  line-height:1.32;
+}
+.news-card .arrow{
+  font-size:16px;
+}
+
+/* Mantém a escala controlada em telas menores. */
+@media(max-width:1050px){
+  .main-nav a{font-size:11px}
+  .news-card h3{font-size:12px}
+}
+@media(max-width:620px){
+  .main-nav a{font-size:11px}
+  .news-card .meta{font-size:8.5px}
+  .news-card h3{font-size:12px}
+}
+</style>
+
+
+<style id="berg-final-home-tuning-v8">
+/* Ajustes localizados: cabeçalho e Últimas notícias em largura total. */
+@media(min-width:901px){
+  .site-header{
+    padding-left:calc((100vw - min(1240px,96vw))/2);
+    padding-right:calc((100vw - min(1240px,96vw))/2);
+  }
+  .site-logo{width:188px}
+  .main-nav a{font-size:12.5px}
+  .lang-switch{font-size:12px;font-weight:800}
+}
+.latest-grid{grid-template-columns:1fr}
+.latest .agenda{display:none}
+.latest .news-cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.latest .news-card h3{font-size:13.5px;line-height:1.32}
+.latest .news-card .meta{font-size:9px}
+@media(max-width:1050px) and (min-width:901px){
+  .site-logo{width:180px}
+  .main-nav a{font-size:11.5px}
+}
+@media(max-width:620px){
+  .latest .news-cards{grid-template-columns:1fr 1fr}
+  .latest .news-card h3{font-size:12px}
+}
+</style>
+
+
+<style id="berg-footer-institutional-v9">
+/* Rodapé institucional BERG + Instituto Vinciano */
+.site-footer{padding:30px 0 12px}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.15fr .8fr .9fr 1.15fr;
+  gap:38px;
+  align-items:start;
+}
+.footer-brand img{width:165px}
+.footer-motto{
+  margin:12px 0 0;
+  max-width:230px;
+  color:rgba(255,255,255,.78);
+  font-size:10.5px;
+  line-height:1.5;
+}
+.footer-nav{display:grid;grid-template-columns:1fr;gap:5px}
+.footer-social{display:flex;gap:9px;margin-top:13px}
+.footer-social a{
+  width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid rgba(255,255,255,.35);border-radius:50%;
+  color:#fff;text-decoration:none;transition:.2s ease;
+}
+.footer-social a:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.footer-social svg{width:16px;height:16px;fill:currentColor}
+.footer-institute{text-align:left}
+.footer-institute img{display:block;width:min(235px,100%);height:auto;margin:0 0 9px}
+.footer-institute .institute-motto{
+  margin:0 0 10px;color:rgba(255,255,255,.72);font-size:10px;font-style:italic;
+}
+.footer-institute a{color:#fff;text-decoration:none;font-size:10px;font-weight:700}
+.footer-institute a:hover{text-decoration:underline}
+.footer-bottom{justify-content:flex-start}
+@media(max-width:900px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+}
+@media(max-width:620px){
+  .footer-grid{grid-template-columns:1fr}
+  .footer-institute img{width:220px}
+}
+</style>
+
+<style id="berg-footer-type-v10">
+/* Ajuste tipográfico do rodapé: mais presença, hierarquia e legibilidade. */
+.site-footer{padding:42px 0 18px}
+.footer-grid{gap:44px}
+.footer-brand img{width:185px}
+.footer-label{
+  margin:0 0 14px;
+  color:rgba(255,255,255,.72);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.10em;
+}
+.footer-motto{
+  margin:15px 0 0;
+  max-width:270px;
+  color:rgba(255,255,255,.90);
+  font-size:14px;
+  line-height:1.55;
+  font-weight:500;
+}
+.footer-nav{gap:8px}
+.footer-nav a,.footer-column a,.footer-column p{
+  font-size:14px;
+  line-height:1.65;
+}
+.footer-nav a{font-weight:600}
+.footer-social{gap:11px;margin-top:17px}
+.footer-social a{width:38px;height:38px}
+.footer-social svg{width:19px;height:19px}
+.footer-institute img{width:min(260px,100%);margin:0 0 13px}
+.footer-institute .institute-motto{
+  margin:0 0 12px;
+  color:rgba(255,255,255,.88);
+  font-size:14px;
+  line-height:1.45;
+  font-style:italic;
+}
+.footer-institute a{font-size:13px;font-weight:700}
+.footer-bottom{
+  margin-top:32px;
+  padding-top:15px;
+  font-size:11px;
+  color:rgba(255,255,255,.72);
+}
+@media(max-width:900px){
+  .footer-grid{gap:34px}
+}
+@media(max-width:620px){
+  .site-footer{padding-top:34px}
+  .footer-brand img{width:175px}
+  .footer-institute img{width:245px}
+  .footer-motto,.footer-institute .institute-motto{font-size:13.5px}
+  .footer-nav a,.footer-column a,.footer-column p{font-size:13.5px}
+}
+</style>
+
+
+<style id="noticias-page-layout">
+.news-page{max-width:1180px;margin:0 auto;padding:46px 32px 70px}
+.news-page-head{margin-bottom:30px}
+.news-page-head h1{margin:0 0 8px}
+.news-page-head p{max-width:760px;margin:0}
+.news-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.news-unit{display:grid;grid-template-columns:180px 1fr;gap:20px;border-top:1px solid #d9e1ee;padding-top:20px;text-decoration:none;color:inherit}
+.news-unit img{width:180px;height:120px;object-fit:cover;background:#eef2f7}
+.news-unit .meta{margin:0 0 6px}
+.news-unit h2{margin:0 0 8px;font-size:20px;line-height:1.15}
+.news-unit p{margin:0;line-height:1.5}
+@media(max-width:850px){.news-list{grid-template-columns:1fr}}
+@media(max-width:560px){.news-page{padding:30px 20px 50px}.news-unit{grid-template-columns:110px 1fr}.news-unit img{width:110px;height:90px}}
+</style>
+
+
+<style id="sobre-page-layout">
+.about-page{max-width:1180px;margin:0 auto;padding:48px 32px 72px}
+.about-head{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.55fr);gap:48px;align-items:end;padding-bottom:34px;border-bottom:1px solid var(--line)}
+.about-head .eyebrow{margin-bottom:10px}
+.about-head h1{margin:0 0 14px;color:var(--deep);font-size:clamp(34px,4vw,52px);line-height:1.05;letter-spacing:-.035em}
+.about-head p{max-width:760px;margin:0;color:var(--muted);font-size:16px;line-height:1.7}
+.about-quote{padding:22px 24px;background:var(--soft);border-left:4px solid var(--blue-2);color:var(--deep);font-size:20px;font-weight:700;line-height:1.35}
+.about-sections{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 52px;margin-top:14px}
+.about-block{padding:34px 0;border-bottom:1px solid var(--line)}
+.about-block .meta{margin-bottom:8px}
+.about-block h2{margin:0 0 12px;color:var(--deep);font-size:24px;line-height:1.2}
+.about-block p{margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.72}
+.about-block p:last-child{margin-bottom:0}
+.institute-box{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:32px;align-items:center;margin-top:42px;padding:30px;background:#f5f8fc;border:1px solid #e2e8f2}
+.institute-box h2{margin:0 0 10px;color:var(--deep);font-size:24px}
+.institute-box p{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
+.institute-box img{width:100%;max-width:240px;height:auto;justify-self:end}
+@media(max-width:800px){.about-head{grid-template-columns:1fr;gap:24px}.about-sections{grid-template-columns:1fr}.institute-box{grid-template-columns:1fr}.institute-box img{justify-self:start}}
+@media(max-width:560px){.about-page{padding:32px 20px 52px}.about-head h1{font-size:34px}.about-quote{font-size:18px}.about-block{padding:26px 0}}
+</style>
+
 </head>
 <body>
-
 <header class="site-header">
-   <a aria-label="P&aacute;gina inicial do BERG" class="brand" href="index.html">
-    <img alt="BERG &mdash; Brazilian Educational Radioastronomy Group" class="site-logo" src="images/berg-logo.png"/>
-   </a>
-   <nav aria-label="Navega&ccedil;&atilde;o principal" class="main-nav">
-    <a href="index.html">Início</a>
-    <a href="iniciativas.html">Iniciativas</a>
-    <a href="noticias.html">Not&iacute;cias</a>
-    <a href="publicacoes.html">Publicações</a>
-    <a href="acervo.html">Acervo</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="contato.html">Contato</a>
-   </nav>
-   <button aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" type="button">
-    ☰
-   </button>
+    <a class="brand" href="index.html" aria-label="Página inicial do BERG">
+      <img class="site-logo" src="images/berg-logo.png" alt="BERG — Brazilian Educational Radioastronomy Group">
+    </a>
+
+    <div class="header-right">
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="producoes.html">Produções</a>
+        <a href="noticias/index.html">Notícias</a>
+        <a class="active" href="sobre.html">Sobre</a>
+      </nav>
+
+      <div class="lang-switch" aria-label="Idioma">
+        <a href="index.html">PT</a><span>|</span><a href="en/index.html">EN</a>
+      </div>
+
+      <button class="menu-toggle" aria-expanded="false" aria-label="Abrir menu" type="button">☰</button>
+    </div>
   </header>
-
-<main>
-
-  <section class="about-hero">
+<main class="about-page">
+  <section class="about-head">
     <div>
-      <p class="eyebrow">SOBRE</p>
-      <h1>Brazilian Educational Radioastronomy Group</h1>
-      <p>
-        O BERG desenvolve experiências de educação e divulgação científica
-        que utilizam a radioastronomia como ponto de encontro entre ciência,
-        tecnologia, arte e diferentes linguagens de aprendizagem.
-      </p>
+      <p class="eyebrow">SOBRE O BERG</p>
+      <h1>Radioastronomia, educação e cultura.</h1>
+      <p>O BERG — Brazilian Educational Radioastronomy Group — é uma iniciativa dedicada à aproximação entre radioastronomia, educação e divulgação científica, desenvolvendo projetos, recursos e experiências que ajudam diferentes públicos a explorar o Universo invisível.</p>
     </div>
+    <div class="about-quote">Explorando o invisível através da educação.</div>
   </section>
 
-  <section class="section">
-    <div class="section-inner intro-grid">
+  <div class="about-sections">
+    <section class="about-block">
+      <p class="meta">QUEM SOMOS</p>
+      <h2>O BERG</h2>
+      <p>O grupo nasceu em 2024 com o propósito de criar e experimentar formas de aproximar a radioastronomia de ambientes educacionais e culturais.</p>
+      <p>Suas ações transitam entre ciência, tecnologia, educação, literatura e artes, buscando diferentes linguagens para apresentar fenômenos, instrumentos e histórias relacionados à observação do Universo em ondas de rádio.</p>
+    </section>
 
-      <div>
-        <p class="eyebrow blue-eyebrow">O BERG</p>
-        <h2>Explorando o invisível através da educação</h2>
+    <section class="about-block">
+      <p class="meta">ATUAÇÃO</p>
+      <h2>O que fazemos</h2>
+      <p>O BERG desenvolve atividades educacionais, publicações, oficinas, recursos digitais, experiências interativas e projetos de divulgação científica.</p>
+      <p>Essas iniciativas podem surgir em escolas, eventos, espaços culturais ou na internet, combinando conteúdos científicos com linguagens capazes de ampliar o contato de diferentes públicos com a radioastronomia.</p>
+    </section>
 
-        <p>
-          O Brazilian Educational Radioastronomy Group — BERG — atua na criação
-          e no desenvolvimento de experiências educativas voltadas à radioastronomia,
-          buscando aproximar conceitos científicos de estudantes, educadores e público geral.
-        </p>
+    <section class="about-block">
+      <p class="meta">TRAJETÓRIA</p>
+      <h2>Uma iniciativa em construção</h2>
+      <p>Desde sua criação, o BERG vem reunindo experiências desenvolvidas em diferentes contextos e transformando parte delas em produções permanentes, materiais educacionais e plataformas digitais.</p>
+      <p>Projetos como Radioastronomia em Cordel, Nora e os Pulsares, Impressões do Universo, Open Dish Atlas e Rastropedia integram esse processo de experimentação e produção.</p>
+    </section>
 
-        <p>
-          Sua proposta parte da ideia de que a radioastronomia pode ser explorada
-          não apenas por meio das ciências exatas, mas também através da literatura,
-          das artes visuais, do audiovisual, da música, do teatro, dos jogos
-          e de outras formas de expressão e aprendizagem.
-        </p>
-      </div>
+    <section class="about-block">
+      <p class="meta">PERSPECTIVA</p>
+      <h2>Ciência em múltiplas linguagens</h2>
+      <p>A radioastronomia é o ponto de partida. A partir dela, o BERG procura estabelecer conexões com educação, programação, história da ciência, literatura, artes e cultura.</p>
+      <p>Mais do que apresentar conteúdos, a proposta é criar possibilidades de investigação, criação e descoberta.</p>
+    </section>
+  </div>
 
-      <aside class="institutional-panel">
-        <p class="eyebrow blue-eyebrow">VÍNCULO INSTITUCIONAL</p>
-
-        <h3>Uma iniciativa do Instituto Vinciano de Artes e Ciências</h3>
-
-        <p>
-          O BERG integra o Instituto Vinciano de Artes e Ciências e compartilha
-          de sua proposta de aproximar arte, ciência, cultura e educação por meio
-          da criação, da investigação e da circulação de conhecimento.
-        </p>
-
-        <a class="text-link" href="https://vinciano.org">
-          Conheça o Instituto Vinciano →
-        </a>
-      </aside>
-
+  <section class="institute-box">
+    <div>
+      <p class="meta">VÍNCULO INSTITUCIONAL</p>
+      <h2>Instituto Vinciano de Artes e Ciências</h2>
+      <p>O BERG é uma iniciativa do Instituto Vinciano de Artes e Ciências, organização voltada ao desenvolvimento de projetos e produções que aproximam arte, ciência, educação e cultura.</p>
     </div>
+    <img src="images/logo-instituto.png" alt="Instituto Vinciano de Artes e Ciências">
   </section>
-
-  <section class="section mvv">
-    <div class="section-inner">
-
-      <p class="eyebrow blue-eyebrow">PROPÓSITO</p>
-      <h2>Missão, visão e valores</h2>
-
-      <div class="mvv-grid">
-
-        <article class="mvv-card">
-          <h3>Missão</h3>
-          <p>
-            Promover a educação científica por meio da radioastronomia,
-            inspirando a curiosidade, a investigação e novas gerações
-            interessadas pela ciência.
-          </p>
-        </article>
-
-        <article class="mvv-card">
-          <h3>Visão</h3>
-          <p>
-            Ser uma referência em educação científica no campo
-            da radioastronomia.
-          </p>
-        </article>
-
-        <article class="mvv-card">
-          <h3>Valores</h3>
-          <p>
-            Inovação, colaboração e educação inclusiva orientam
-            o desenvolvimento das iniciativas do BERG.
-          </p>
-        </article>
-
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-inner practice-grid">
-
-      <div>
-        <p class="eyebrow blue-eyebrow">COMO ATUAMOS</p>
-        <h2>Pesquisa, ensino e divulgação científica</h2>
-
-        <p>
-          O BERG articula diferentes formas de participação e produção,
-          buscando transformar conteúdos de radioastronomia em experiências
-          acessíveis, experimentais e culturalmente diversas.
-        </p>
-      </div>
-
-      <div class="practice-list">
-        <div class="practice-item">Oficinas</div>
-        <div class="practice-item">Palestras</div>
-        <div class="practice-item">Recursos educativos</div>
-        <div class="practice-item">Exposições</div>
-        <div class="practice-item">Cursos</div>
-        <div class="practice-item">Participação em eventos</div>
-        <div class="practice-item">Sessões de observação</div>
-        <div class="practice-item">Ações de divulgação científica</div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section languages">
-    <div class="section-inner">
-
-      <p class="eyebrow blue-eyebrow">INTERDISCIPLINARIDADE</p>
-      <h2>Radioastronomia em diferentes linguagens</h2>
-
-      <p>
-        A proposta educativa do BERG conecta a radioastronomia a diferentes áreas
-        do conhecimento e formas de expressão, ampliando as possibilidades
-        de criação, participação e aprendizagem.
-      </p>
-
-      <div class="language-cloud">
-        <span class="language-tag">Matemática</span>
-        <span class="language-tag">Física</span>
-        <span class="language-tag">Engenharia</span>
-        <span class="language-tag">Literatura</span>
-        <span class="language-tag">Música</span>
-        <span class="language-tag">Teatro</span>
-        <span class="language-tag">Jogos</span>
-        <span class="language-tag">Artes Visuais</span>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="motto-band">
-    <p>LEMA DO BERG</p>
-    <h2>Explorando o invisível através da educação</h2>
-  </section>
-
 </main>
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
 
-<footer class="site-footer" id="contato">
-
-    <div class="footer-inner">
-
-      <div class="footer-brand">
-        <img
-          src="images/berg-logo.png"
-          alt="BERG — Brazilian Educational Radioastronomy Group"
-        >
-      </div>
-
-      <div class="footer-column">
-        <p class="footer-label">Sobre o BERG</p>
-
-        <h3>
-          Brazilian Educational<br>
-          Radioastronomy Group
-        </h3>
-
-        <p>
-          Iniciativa dedicada à educação e à divulgação científica por meio
-          da radioastronomia, aproximando ciência, tecnologia e diferentes
-          linguagens de aprendizagem.
-        </p>
-
-        <a class="footer-link" href="sobre.html">
-          Conheça o BERG →
-        </a>
-      </div>
-
-      <div class="footer-column">
-        <p class="footer-label">Iniciativas</p>
-
-        <h3>
-          Radioastronomia, educação<br>
-          e experimentação.
-        </h3>
-
-        <p>
-          Conheça iniciativas, recursos e produções desenvolvidos pelo BERG em
-          diferentes linguagens e contextos educativos.
-        </p>
-
-        <a class="footer-link" href="iniciativas.html">
-          Explorar iniciativas →
-        </a>
-      </div>
-
-      <div class="footer-column">
-        <p class="footer-label">Vínculo institucional</p>
-
-        <h3>
-          Uma iniciativa do Instituto Vinciano de Artes e Ciências
-        </h3>
-
-        <div class="footer-motto">
-          Ars et scientia concordant
+        <div class="footer-brand">
+          <img src="images/berg-logo.png" alt="BERG — Brazilian Educational Radioastronomy Group">
+          <p class="footer-motto">Explorando o invisível através da educação.</p>
         </div>
 
-        <a class="footer-link" href="https://vinciano.org">
-          Instituto Vinciano →
-        </a>
+        <div class="footer-column">
+          <p class="footer-label">Navegação</p>
+          <div class="footer-nav">
+            <a href="index.html">Início</a>
+            <a href="producoes.html">Produções</a>
+            <a href="noticias/index.html">Notícias</a>
+            <a href="sobre.html">Sobre</a>
+          </div>
+        </div>
 
-        <div class="footer-contact">
+        <div class="footer-column">
           <p class="footer-label">Contato</p>
-          <p>
-            <a href="mailto:berg@vinciano.org">berg@vinciano.org</a>
-          </p>
+          <p><a href="mailto:berg@vinciano.org">berg@vinciano.org</a></p>
+          <div class="footer-social" aria-label="Redes sociais do BERG">
+            <a href="#" aria-label="Instagram do BERG" title="Instagram — inserir link">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.5-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/></svg>
+            </a>
+            <a href="#" aria-label="Canal do BERG no YouTube" title="YouTube — inserir link">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"/></svg>
+            </a>
+          </div>
         </div>
+
+        <div class="footer-institute">
+          <p class="footer-label">Vínculo institucional</p>
+          <img src="images/logo-instituto.png" alt="Instituto Vinciano de Artes e Ciências">
+          <p class="institute-motto">Ars et scientia concordant</p>
+          <a href="https://vinciano.org">Instituto Vinciano →</a>
+        </div>
+
       </div>
 
+      <div class="footer-bottom">
+        <span>© 2026 BERG — Brazilian Educational Radioastronomy Group</span>
+      </div>
     </div>
-
-    <div class="footer-bottom">
-      <p>
-        © 2026 Brazilian Educational Radioastronomy Group ·
-        Instituto Vinciano de Artes e Ciências
-      </p>
-    </div>
-
   </footer>
-
-  <script src="assets/script.js"></script>
+<script src="assets/script.js"></script>
 </body>
 </html>

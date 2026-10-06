@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="BERG — Brazilian Educational Radioastronomy Group. Radioastronomia, educação e divulgação científica.">
-  <title>BERG — Brazilian Educational Radioastronomy Group</title>
+  <meta name="description" content="Produções do BERG — publicações, projetos, recursos educacionais e produções em radioastronomia.">
+  <title>Produções — BERG</title>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
@@ -292,7 +292,24 @@
       .footer-grid{grid-template-columns:1fr}
       .footer-bottom{flex-direction:column}
     }
-  </style>
+  .news-pagination{display:flex;justify-content:space-between;gap:20px;margin-top:38px}.news-pagination a{text-decoration:none;font-weight:700}
+
+/* Grade de Notícias: 20 por página, 2 colunas no desktop e fluxo único no celular. */
+.news-list,
+.news-grid,
+#lista-noticias {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 760px) {
+  .news-list,
+  .news-grid,
+  #lista-noticias {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
 
 <style id="mockup-fidelity-v2">
   :root{
@@ -1092,18 +1109,53 @@ img{max-width:100%}
 }
 </style>
 
-</head>
 
+<style id="noticias-page-layout">
+.news-page{max-width:1180px;margin:0 auto;padding:46px 32px 70px}
+.news-page-head{margin-bottom:30px}
+.news-page-head h1{margin:0 0 8px}
+.news-page-head p{max-width:760px;margin:0}
+.news-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.news-unit{display:grid;grid-template-columns:180px 1fr;gap:20px;border-top:1px solid #d9e1ee;padding-top:20px;text-decoration:none;color:inherit}
+.news-unit img{width:180px;height:120px;object-fit:cover;background:#eef2f7}
+.news-unit .meta{margin:0 0 6px}
+.news-unit h2{margin:0 0 8px;font-size:20px;line-height:1.15}
+.news-unit p{margin:0;line-height:1.5}
+@media(max-width:850px){.news-list{grid-template-columns:1fr}}
+@media(max-width:560px){.news-page{padding:30px 20px 50px}.news-unit{grid-template-columns:110px 1fr}.news-unit img{width:110px;height:90px}}
+</style>
+
+
+<style id="producoes-page-layout">
+.production-page{max-width:1180px;margin:0 auto;padding:46px 32px 70px}
+.production-page-head{margin-bottom:22px}
+.production-page-head h1{margin:0 0 8px;color:var(--deep)}
+.production-page-head p{max-width:780px;margin:0;color:var(--muted)}
+.production-filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px}
+.production-filter{border:1px solid var(--line);background:#fff;color:var(--deep);padding:8px 12px;font:inherit;font-size:11px;font-weight:800;cursor:pointer}
+.production-filter.active,.production-filter:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.production-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.production-unit{display:grid;grid-template-columns:180px minmax(0,1fr);gap:20px;border-top:1px solid #d9e1ee;padding-top:20px;text-decoration:none;color:inherit}
+.production-unit img{width:180px;height:120px;object-fit:cover;background:#eef2f7}
+.production-unit .meta{margin:0 0 6px}
+.production-unit h2{margin:0 0 8px;font-size:20px;line-height:1.15;color:var(--deep)}
+.production-unit p{margin:0;line-height:1.5;color:var(--muted)}
+.production-empty{display:none;padding:28px;background:var(--soft);color:var(--muted)}
+@media(max-width:850px){.production-list{grid-template-columns:1fr}}
+@media(max-width:560px){.production-page{padding:30px 20px 50px}.production-unit{grid-template-columns:110px 1fr}.production-unit img{width:110px;height:90px}}
+</style>
+
+</head>
 <body>
-  <header class="site-header">
+<header class="site-header">
     <a class="brand" href="index.html" aria-label="Página inicial do BERG">
       <img class="site-logo" src="images/berg-logo.png" alt="BERG — Brazilian Educational Radioastronomy Group">
     </a>
 
     <div class="header-right">
       <nav class="main-nav" aria-label="Navegação principal">
-        <a class="active" href="index.html">Início</a>
-        <a href="producoes.html">Produções</a>
+        <a href="index.html">Início</a>
+        <a class="active" href="producoes.html">Produções</a>
         <a href="noticias/index.html">Notícias</a>
         <a href="sobre.html">Sobre</a>
       </nav>
@@ -1115,91 +1167,49 @@ img{max-width:100%}
       <button class="menu-toggle" aria-expanded="false" aria-label="Abrir menu" type="button">☰</button>
     </div>
   </header>
+<main class="production-page">
+  <div class="production-page-head">
+    <h1>Produções</h1>
+    <p>Publicações, projetos, recursos educacionais e produções desenvolvidas pelo BERG.</p>
+  </div>
 
-  
-<main>
-  <section class="editorial-top">
-    <div class="container editorial-grid">
-      <article class="lead-story" data-noticia="2026-10-impressoes-iau" data-formato="manchete">
-        <div class="lead-media"><img id="manchete-img" src="portal/manchete.jpg" alt=""></div>
-        <div class="lead-copy">
-          <p class="meta" id="manchete-meta"></p>
-          <h1 id="manchete-titulo"></h1>
-          <p id="manchete-resumo"></p>
-          <p><a class="button" id="manchete-link" href="#">Leia a matéria →</a></p>
-        </div>
-      </article>
+  <div class="production-filters" aria-label="Filtrar produções">
+    <button class="production-filter active" data-filter="todas">TODAS</button>
+    <button class="production-filter" data-filter="publicacoes">PUBLICAÇÕES</button>
+    <button class="production-filter" data-filter="projetos">PROJETOS</button>
+    <button class="production-filter" data-filter="recursos">RECURSOS EDUCACIONAIS</button>
+    <button class="production-filter" data-filter="arte">ARTE &amp; CULTURA</button>
+  </div>
 
-      <aside class="highlights">
-        <div class="section-top">
-          <h2 class="section-title">Em destaque</h2>
-          <a class="arrow-link" id="destaques-todos" href="producoes.html">Ver todos →</a>
-        </div>
-        <div class="highlight-list" id="destaques-lista"></div>
-      </aside>
-    </div>
-  </section>
+  <div class="production-list" id="producoes-lista">
+    <a class="production-unit" data-category="projetos" href="open-dish-atlas/index.html">
+      <img src="portal/destaque-01.jpg" alt="Open Dish Atlas" onerror="this.style.visibility='hidden'">
+      <div><p class="meta">PROJETO · PLATAFORMA DIGITAL</p><h2>Open Dish Atlas</h2><p>Atlas de iniciativas de radioastronomia educacional e de acesso aberto, reunindo instrumentos, projetos e recursos de diferentes partes do mundo.</p></div>
+    </a>
 
-  <section class="latest">
-    <div class="container latest-grid">
-      <div>
-        <div class="section-top">
-          <h2 class="section-title">Últimas notícias</h2>
-          <a class="arrow-link" href="noticias/index.html">Todas as notícias →</a>
-        </div>
-        <div class="news-cards" id="ultimas-lista"></div>
-      </div>
+    <a class="production-unit" data-category="projetos recursos" href="rastropedia/index.html">
+      <img src="portal/acao-04.jpg" alt="Rastropedia" onerror="this.style.visibility='hidden'">
+      <div><p class="meta">PROJETO · ENCICLOPÉDIA DIGITAL</p><h2>Rastropedia</h2><p>Enciclopédia digital para consulta de conceitos, instrumentos, fenômenos, pessoas e observatórios relacionados à radioastronomia.</p></div>
+    </a>
 
-      <aside class="agenda">
-        <div class="section-top">
-          <h2 class="section-title">Agenda</h2>
-          <a class="arrow-link" href="atividades.html">Ver agenda →</a>
-        </div>
-        <div class="agenda-list" id="agenda-lista"></div>
-      </aside>
-    </div>
-  </section>
+    <a class="production-unit" data-category="publicacoes arte" href="cordel/index.html">
+      <img src="portal/destaque-03.jpg" alt="Radioastronomia em Cordel" onerror="this.style.visibility='hidden'">
+      <div><p class="meta">PUBLICAÇÃO · LITERATURA</p><h2>Radioastronomia em Cordel</h2><p>Produção que aproxima temas da radioastronomia da literatura de cordel, explorando ciência, educação e cultura popular.</p></div>
+    </a>
 
-  <section class="action-section">
-    <div class="container">
-      <div class="section-top">
-        <div>
-          <p class="eyebrow">Atividades</p>
-          <h2 class="section-title" id="acoes-titulo">Radioastronomia em ação</h2>
-          <p class="action-intro" id="acoes-intro"></p>
-        </div>
-        <a class="arrow-link" href="producoes.html">Conheça todas as atividades →</a>
-      </div>
-      <div class="action-grid" id="acoes-lista"></div>
-    </div>
-  </section>
+    <a class="production-unit" data-category="publicacoes recursos arte" href="nora/index.html">
+      <img src="portal/destaque-02.jpg" alt="Nora e os Pulsares" onerror="this.style.visibility='hidden'">
+      <div><p class="meta">PUBLICAÇÃO · LITERATURA INFANTOJUVENIL</p><h2>Nora e os Pulsares</h2><p>História que aproxima jovens leitores da ciência por meio da trajetória de Nora e de uma descoberta relacionada aos pulsares.</p></div>
+    </a>
 
-  <section class="about-signup">
-    <div class="container about-signup-grid">
-      <div class="about-panel">
-        <div>
-          <h2 id="sobre-titulo">Sobre o BERG</h2>
-          <p id="sobre-texto"></p>
-          <a class="button" id="sobre-link" href="sobre.html">Conheça o BERG →</a>
-        </div>
-        <div class="about-image"><img src="portal/sobre.jpg" alt="BERG"></div>
-      </div>
-
-      <aside class="signup-panel">
-        <h2>Acompanhe o BERG</h2>
-        <p>Cadastre-se para receber novidades sobre nossas atividades, projetos, publicações e materiais de educação e divulgação em radioastronomia.</p>
-        <p><a class="button" href="https://forms.gle/V65G9i89pU9EGGYx6" target="_blank" rel="noopener noreferrer">Quero acompanhar →</a></p>
-        <p class="signup-note"></p>
-      </aside>
-    </div>
-  </section>
+    <a class="production-unit" data-category="projetos arte recursos" href="impressoes-do-universo/index.html">
+      <img src="portal/ultima-01.jpg" alt="Impressões do Universo" onerror="this.style.visibility='hidden'">
+      <div><p class="meta">PROJETO · ARTE &amp; EDUCAÇÃO</p><h2>Impressões do Universo</h2><p>Projeto que articula radioastronomia, expressão visual e processos educativos por meio de carimbos, imagens e registros produzidos pelos participantes.</p></div>
+    </a>
+  </div>
+  <div class="production-empty" id="producoes-vazio">Nenhuma produção nesta categoria.</div>
 </main>
-
-
-  <!-- =========================================================
-       5. RODAPÉ
-       ========================================================= -->
-  <footer class="site-footer">
+<footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
 
@@ -1245,106 +1255,28 @@ img{max-width:100%}
       </div>
     </div>
   </footer>
+<script src="assets/script.js"></script>
 
-  <script src="assets/script.js"></script>
-
-  <!-- Fallback do menu móvel caso assets/script.js ainda use outra implementação -->
-  <script>
-    (function(){
-      const button = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('.main-nav');
-      if(!button || !nav) return;
-      button.addEventListener('click', function(){
-        nav.classList.toggle('mobile-open');
-        const open = nav.classList.contains('mobile-open');
-        button.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    })();
-  </script>
-
-
-<script src="noticias/noticias.js"></script>
-<script src="portal/conteudo.js"></script>
 <script>
-(function () {
-  const esc = (v) => String(v ?? '').replace(/[&<>"']/g, c => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-  }[c]));
-
-  const setText = (id, value) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = value || '';
-  };
-  const setHref = (id, value) => {
-    const el = document.getElementById(id);
-    if (el && value) el.href = value;
-  };
-
-  const data = window.BERG_PORTAL;
-  if (!data) {
-    document.body.insertAdjacentHTML('afterbegin',
-      '<div style="padding:10px;text-align:center;background:#fff3cd;color:#664d03;font:14px Arial">Não foi possível carregar portal/conteudo.js. Verifique se a pasta portal está ao lado do index.html.</div>');
-    return;
-  }
-
-  // Manchete é alimentada pelo catálogo central de notícias.
-  const mancheteId = data.mancheteId;
-  const mancheteHost = document.querySelector('[data-formato="manchete"]');
-  if (mancheteHost && mancheteId) mancheteHost.dataset.noticia = mancheteId;
-
-  const destaques = (data.destaques || []).slice(0,3);
-  document.getElementById('destaques-lista').innerHTML = destaques.map((x,i) => `
-    <a class="highlight-card" href="${esc(x.link || '#')}">
-      <img src="portal/destaque-${String(i+1).padStart(2,'0')}.jpg" alt="${esc(x.titulo)}">
-      <div>
-        <p class="meta">${esc(x.tipo)}</p>
-        <h3>${esc(x.titulo)}</h3>
-        <p>${esc(x.resumo)}</p>
-      </div>
-    </a>`).join('');
-  const ultimasIds = (data.ultimasIds || []).slice(0,4);
-  document.getElementById('ultimas-lista').innerHTML = ultimasIds.map(id =>
-    `<a class="news-card" href="#" data-noticia="${esc(id)}" data-formato="ultima"></a>`
-  ).join('');
-
-  const agenda = (data.agenda || []).slice(0,3);
-  document.getElementById('agenda-lista').innerHTML = agenda.map(x => `
-    <a class="agenda-item" href="${esc(x.link || '#')}">
-      <div class="agenda-date"><strong>${esc(x.dia)}</strong><span>${esc(x.mes)}</span></div>
-      <div>
-        <h3>${esc(x.titulo)}</h3>
-        <p>${esc(x.local)}</p>
-      </div>
-    </a>`).join('');
-
-  const a = data.acoes || {};
-  setText('acoes-titulo', a.titulo || 'Radioastronomia em ação');
-  setText('acoes-intro', a.introducao);
-  document.getElementById('acoes-lista').innerHTML = (a.itens || []).slice(0,4).map((x,i) => `
-    <a class="action-card" href="${esc(x.link || '#')}">
-      <div class="action-card-media">
-        <img src="portal/acao-${String(i+1).padStart(2,'0')}.jpg" alt="${esc(x.titulo)}">
-      </div>
-      <div class="action-card-body">
-        <p class="meta">${esc(x.tipo)}</p>
-        <h3>${esc(x.titulo)}</h3>
-        <p>${esc(x.resumo)}</p>
-      </div>
-    </a>`).join('');
-
-  const s = data.sobre || {};
-  setText('sobre-titulo', s.titulo || 'Sobre o BERG');
-  setText('sobre-texto', s.texto);
-  setHref('sobre-link', s.link);
-
-  const c = data.cadastro || {};
-  setText('cadastro-titulo', c.titulo || 'Receba nossas novidades');
-  setText('cadastro-texto', c.texto);
-  setText('cadastro-nota', c.nota);
-
+(function(){
+  const buttons=[...document.querySelectorAll('.production-filter')];
+  const items=[...document.querySelectorAll('.production-unit')];
+  const empty=document.getElementById('producoes-vazio');
+  buttons.forEach(button=>{
+    button.addEventListener('click',()=>{
+      const filter=button.dataset.filter;
+      buttons.forEach(b=>b.classList.toggle('active',b===button));
+      let visible=0;
+      items.forEach(item=>{
+        const show=filter==='todas'||item.dataset.category.split(' ').includes(filter);
+        item.style.display=show?'grid':'none';
+        if(show) visible++;
+      });
+      empty.style.display=visible?'none':'block';
+    });
+  });
 })();
 </script>
 
-<script src="noticias/noticias-render.js"></script>
 </body>
 </html>

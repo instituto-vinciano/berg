@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="pt-BR" data-berg-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Scratch for Radio Astronomy — iniciativa experimental do BERG que explora programação, jogos, simulações e narrativas interativas para a educação em radioastronomia.">
+<title>Scratch for Radio Astronomy — BERG</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
+
+:root{
+  --blue:#2450b8;
+  --deep:#15357f;
+  --header-blue:#31509f;
+  --ink:#111827;
+  --muted:#5d6675;
+  --soft:#f4f6fa;
+  --line:#dde2ea;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:#fff;
+  font-family:"DM Sans",Arial,sans-serif;
+  line-height:1.6;
+}
+a{color:inherit}
+
+/* CABEÇALHO BERG */
+.site-header{
+  height:96px;
+  padding:0 6vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:var(--header-blue);
+  border-bottom:1px solid rgba(255,255,255,.20);
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+.brand{display:flex;align-items:center;text-decoration:none}
+.site-logo{display:block;width:170px;height:auto}
+.header-right{display:flex;align-items:center;gap:24px}
+.main-nav{display:flex;gap:34px;align-items:center}
+.main-nav a{
+  color:#fff;
+  text-decoration:none;
+  text-transform:uppercase;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.06em;
+}
+.main-nav a:hover,.main-nav a.active{color:#d9e2ff}
+.lang-switch{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding-left:16px;
+  border-left:1px solid rgba(255,255,255,.35);
+  font-size:13px;
+  font-weight:700;
+}
+.lang-switch a{color:#fff;text-decoration:none}
+.menu-toggle{
+  display:none;
+  color:#fff;
+  background:none;
+  border:0;
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* LANDING */
+.hero{
+  padding:72px 8vw;
+  background:var(--soft);
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{
+  max-width:1120px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:.78fr 1.22fr;
+  gap:64px;
+  align-items:center;
+}
+.cover{
+  max-width:390px;
+  margin:0 auto;
+}
+.cover img{
+  display:block;
+  width:100%;
+  height:auto;
+  background:#fff;
+  box-shadow:0 16px 38px rgba(20,35,70,.18);
+}
+.eyebrow{
+  margin:0 0 12px;
+  color:var(--blue);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+.hero h1{
+  margin:0;
+  font-family:"Libre Baskerville",Georgia,serif;
+  font-size:48px;
+  line-height:1.15;
+}
+.hero .lead{
+  max-width:690px;
+  margin:20px 0 0;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.75;
+}
+.launch{
+  margin-top:30px;
+  padding:22px 24px;
+  border-left:4px solid var(--blue);
+  background:#fff;
+}
+.launch strong{
+  display:block;
+  margin-bottom:4px;
+  color:var(--deep);
+  font-size:18px;
+}
+.launch span{color:var(--muted)}
+
+.section{
+  padding:44px 8vw;
+  border-bottom:1px solid var(--line);
+}
+.section-inner{max-width:1120px;margin:0 auto}
+.section h2{
+  margin:0 0 18px;
+  font-family:"Libre Baskerville",Georgia,serif;
+  font-size:34px;
+  line-height:1.3;
+}
+.section p{
+  max-width:780px;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.75;
+}
+.project-note{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:42px;
+  align-items:start;
+}
+.info-box{
+  padding:28px;
+  background:var(--soft);
+  border:1px solid var(--line);
+}
+.info-box p{margin:0}
+.info-box strong{color:var(--ink)}
+
+/* RODAPÉ BERG */
+.site-footer{
+  padding:58px 8vw 20px;
+  color:rgba(255,255,255,.88);
+  background:var(--header-blue);
+}
+.footer-container{max-width:1120px;margin:0 auto}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.05fr .7fr .85fr 1.15fr;
+  gap:44px;
+  align-items:start;
+}
+.footer-brand img{display:block;width:185px;height:auto}
+.footer-brand .footer-motto{
+  margin:16px 0 0;
+  color:#fff;
+  font-size:14px;
+  line-height:1.55;
+}
+.footer-label{
+  margin:0 0 10px;
+  color:rgba(255,255,255,.78);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.footer-nav{display:grid;gap:8px}
+.footer-nav a,.footer-column a,.footer-column p,.footer-institute a{
+  color:rgba(255,255,255,.9);
+  font-size:14px;
+  text-decoration:none;
+}
+.footer-column p{margin:0 0 14px}
+.footer-institute img{
+  display:block;
+  width:220px;
+  max-width:100%;
+  height:auto;
+  margin:0 0 12px;
+}
+.institute-motto{
+  margin:0 0 12px;
+  color:#fff;
+  font-size:14px;
+  font-style:italic;
+}
+.footer-bottom{
+  margin:34px 0 0;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.20);
+  color:rgba(255,255,255,.72);
+  font-size:11px;
+}
+
+@media(max-width:900px){
+  .main-nav{display:none}
+  .main-nav.mobile-open{
+    display:flex;
+    position:absolute;
+    top:96px;
+    left:0;
+    right:0;
+    flex-direction:column;
+    gap:0;
+    padding:12px 6vw 18px;
+    background:var(--header-blue);
+  }
+  .main-nav.mobile-open a{
+    padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .lang-switch{display:none}
+  .menu-toggle{display:block}
+  .hero-inner{grid-template-columns:1fr;gap:42px}
+  .cover{max-width:330px}
+  .project-note{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .site-header{padding:0 5vw}
+  .site-logo{width:160px}
+  .hero,.section{padding-left:7vw;padding-right:7vw}
+  .hero h1{font-size:38px}
+  .footer-grid{grid-template-columns:1fr}
+  .site-footer{padding-left:7vw;padding-right:7vw}
+}
+
+/* SCRATCH FOR RADIO ASTRONOMY */
+.scratch-hero{
+  padding:72px 8vw;
+  background:var(--soft);
+  border-bottom:1px solid var(--line);
+}
+.scratch-hero-inner{
+  max-width:1120px;
+  margin:0 auto;
+}
+.scratch-hero h1{
+  max-width:850px;
+  margin:0;
+  font-family:"Libre Baskerville",Georgia,serif;
+  font-size:48px;
+  line-height:1.15;
+}
+.scratch-hero .lead{
+  max-width:760px;
+  margin:20px 0 0;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.75;
+}
+.experiment-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+  margin-top:22px;
+}
+.experiment-card{
+  padding:24px;
+  background:var(--soft);
+  border:1px solid var(--line);
+}
+.experiment-card h3{
+  margin:0 0 7px;
+  color:var(--deep);
+  font-size:18px;
+}
+.experiment-card p{margin:0!important;font-size:14px!important}
+.scratch-gallery{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+  margin-top:28px;
+}
+.scratch-shot{
+  min-height:260px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+  color:var(--muted);
+  background:var(--soft);
+  border:1px dashed #aeb8c8;
+  text-align:center;
+}
+.studio-box{
+  padding:34px;
+  color:#fff;
+  background:var(--header-blue);
+}
+.studio-box .eyebrow{color:#d9e2ff}
+.studio-box h2{color:#fff}
+.studio-box p{color:rgba(255,255,255,.88)}
+.studio-button{
+  display:inline-block;
+  margin-top:10px;
+  padding:12px 18px;
+  color:var(--header-blue);
+  background:#fff;
+  font-size:14px;
+  font-weight:700;
+  text-decoration:none;
+}
+@media(max-width:900px){
+  .experiment-grid{grid-template-columns:1fr}
+  .scratch-gallery{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .scratch-hero{padding-left:7vw;padding-right:7vw}
+  .scratch-hero h1{font-size:38px}
+}
+
+</style>
+</head>
+
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html" aria-label="Página inicial do BERG">
+    <img class="site-logo" src="../images/berg-logo.png" alt="BERG — Brazilian Educational Radioastronomy Group">
+  </a>
+
+  <div class="header-right">
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="../index.html">Início</a>
+      <a href="../producoes.html">Produções</a>
+      <a href="../noticias/index.html">Notícias</a>
+      <a href="../sobre.html">Sobre</a>
+    </nav>
+
+    <div class="lang-switch" aria-label="Idioma">
+      <a href="index.html">PT</a><span>|</span><a href="../en/index.html">EN</a>
+    </div>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="scratch-hero">
+    <div class="scratch-hero-inner">
+      <p class="eyebrow">PROGRAMAÇÃO · EDUCAÇÃO · RADIOASTRONOMIA</p>
+      <h1>Scratch for Radio Astronomy</h1>
+      <p class="lead">Programação criativa para explorar o Universo invisível.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner project-note">
+      <div>
+        <p class="eyebrow">SOBRE A INICIATIVA</p>
+        <h2>Radioastronomia em blocos de programação</h2>
+        <p><strong>Scratch for Radio Astronomy</strong> é uma iniciativa educacional do BERG que explora formas criativas de utilizar o ambiente de programação Scratch para abordar conceitos relacionados à radioastronomia.</p>
+        <p>Combinando programação e imaginação científica, a proposta busca tornar temas como ondas eletromagnéticas, sinais de rádio, pulsares e ruído cósmico mais acessíveis e envolventes. Simulações, jogos e narrativas visuais funcionam como campo de experimentação para investigar maneiras de representar, de forma interativa, como observamos o Universo por meio das ondas de rádio.</p>
+      </div>
+
+      <aside class="info-box">
+        <p class="eyebrow">EM DESENVOLVIMENTO</p>
+        <p>As experiências reunidas nesta iniciativa não constituem necessariamente produtos finalizados. São <strong>protótipos, testes e ideias</strong> usados pelo BERG para investigar possibilidades de atividades educacionais futuras.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <p class="eyebrow">LABORATÓRIO DE IDEIAS</p>
+      <h2>Experimentos em desenvolvimento</h2>
+      <p>O Scratch vem sendo utilizado como espaço para testar diferentes maneiras de transformar conceitos, histórias e instrumentos da radioastronomia em experiências interativas. São ideias em diferentes estágios de desenvolvimento, reunidas como parte de um processo de experimentação educacional.</p>
+
+      <figure style="margin:26px 0 30px;">
+        <img src="imagem-scratch.jpg" alt="Experimentos do Scratch for Radio Astronomy" style="display:block;width:100%;height:auto;">
+      </figure>
+<div class="experiment-grid">
+        <article class="experiment-card"><h3>Jansky</h3><p>Experimento inspirado na história e nas descobertas que marcaram o nascimento da radioastronomia.</p></article>
+        <article class="experiment-card"><h3>Jogo da Memória</h3><p>Teste de uma mecânica simples de jogo aplicada a elementos e conceitos da radioastronomia.</p></article>
+        <article class="experiment-card"><h3>Maser</h3><p>Exploração experimental de uma representação interativa relacionada ao tema dos masers.</p></article>
+        <article class="experiment-card"><h3>Paper Circuit</h3><p>Experimentação que aproxima programação, representação visual e atividades com circuitos de papel.</p></article>
+        <article class="experiment-card"><h3>Parábola</h3><p>Exploração visual e interativa de princípios relacionados às antenas parabólicas e à recepção de sinais.</p></article>
+        <article class="experiment-card"><h3>Pulsar Hunter</h3><p>Ideia de experiência em que o participante procura reconhecer sinais associados a pulsares.</p></article>
+        <article class="experiment-card"><h3>Redshift</h3><p>Experimento visual para explorar, por meio da interação, ideias relacionadas ao deslocamento espectral.</p></article>
+        <article class="experiment-card"><h3>Do LED ao Pulsar</h3><p>Investigação de uma narrativa interativa que conecta representações simples a conceitos relacionados aos pulsares.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="studio-box">
+        <p class="eyebrow">SCRATCH</p>
+        <h2>Explore o estúdio do projeto</h2>
+        <p>Parte dos experimentos de <em>Scratch for Radio Astronomy</em> está reunida no estúdio público do BERG no Scratch. O conteúdo permanece em desenvolvimento e pode incluir projetos ainda incompletos ou em fase de teste.</p>
+        <a class="studio-button" href="https://scratch.mit.edu/studios/50781282/" target="_blank" rel="noopener noreferrer">Acessar o estúdio no Scratch →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="contato">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="../images/berg-logo.png" alt="BERG — Brazilian Educational Radioastronomy Group">
+        <p class="footer-motto">Explorando o invisível através da educação.</p>
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-label">Navegação</p>
+        <div class="footer-nav">
+          <a href="../index.html">Início</a>
+          <a href="../producoes.html">Produções</a>
+          <a href="../noticias/index.html">Notícias</a>
+          <a href="../sobre.html">Sobre</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-label">Contato</p>
+        <p><a href="mailto:berg@vinciano.org">berg@vinciano.org</a></p>
+      </div>
+
+      <div class="footer-institute">
+        <p class="footer-label">Vínculo institucional</p>
+        <img src="../images/logo-instituto.png" alt="Instituto Vinciano de Artes e Ciências">
+        <p class="institute-motto">Ars et scientia concordant</p>
+        <a href="https://vinciano.org">Instituto Vinciano →</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 BERG — Brazilian Educational Radioastronomy Group</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>
